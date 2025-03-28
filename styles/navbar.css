@@ -1,0 +1,32 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.navbar {
+  background: #302b1c;
+}
+.nav-logo {
+  max-width: 120px;
+  max-height: 57px;
+}
+
+input.form-control,
+input.form-control:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+a.nav-link {
+  font-size: 18px;
+  padding: 8px 20px;
+  text-decoration: none;
+}
+
+button.sign-in-btn {
+  background-color: #b1761f;
+  color: #fff;
+  min-width: 190px;
+}
