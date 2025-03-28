@@ -1,0 +1,41 @@
+{
+    "categories": [
+      {
+        "name": "Music",
+        "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f"
+      },
+      {
+        "name": "Sports & Games",
+        "image": "https://images.unsplash.com/photo-1595435742656-5272d0b3fa82"
+      },
+      {
+        "name": "Food & Drink",
+        "image": "https://images.unsplash.com/photo-1532634922-8fe0b757fb13"
+      },
+      {
+        "name": "Travel & Tourism",
+        "image": "https://images.unsplash.com/photo-1491555103944-7c647fd857e6"
+      },
+      {
+        "name": "Health & Hygiene",
+        "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a"
+      },
+      {
+        "name": "Performing & Visual Arts",
+        "image": "https://images.unsplash.com/photo-1661697522358-1efc13ba95e5"
+      },
+      {
+        "name": "Education",
+        "image": "https://images.unsplash.com/photo-1571260899304-425eee4c7efc"
+      },
+      {
+        "name": "Politics",
+        "image": "https://images.unsplash.com/photo-1520452112805-c6692c840af0"
+      },
+      {
+        "name": "Community",
+        "image": "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca"
+      }
+    ]
+  }
+  
