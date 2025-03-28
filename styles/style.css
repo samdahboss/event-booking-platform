@@ -94,9 +94,24 @@ section{
     margin-left: -25%;
   }
 
+  .section-title{
+    font-size: 20px !important;
+  }
   .category-container{
     grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (max-width: 570px) {
+  img.category-img{
+    width: 75px;
+    height: 75px;
+  }
+
+  .category-container{
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .category-container p{
+    font-size: 12px;
+  }
 }
