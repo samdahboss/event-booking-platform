@@ -93,6 +93,10 @@ section{
     width: 150% !important; /* Zoom in to remove the orange parts */
     margin-left: -25%;
   }
+
+  .category-container{
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 @media (max-width: 570px) {
 }
