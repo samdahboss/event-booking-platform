@@ -5,9 +5,8 @@ setTimeout(() => {
 }, 5000);
 
 //Function to get Navbar and add it to Page
-// document.addEventListener("DOMContentLoaded", function () {
-const header = document.getElementById("header");
 const getNavBar = async () => {
+  const header = document.getElementById("header");
   try {
     const navbar = await fetch("./components/navbar.html");
     const navbarText = await navbar.text();
@@ -60,6 +59,44 @@ const populateCategories = async () => {
 };
 populateCategories();
 
+// Function to handle the filter buttons
+let filterValue = "All"; // Default filter value
+
+const handleFilterButtons = () => {
+  const filterButtons = document.querySelectorAll(".filter-button");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      filterValue = button.textContent;
+      populateEvents(); // Call the function to filter events
+    });
+  });
+};
+
+// Function to fetch events data
+const fetchEvents = async () => {
+  try {
+    const response = await fetch("../data/events.json");
+    if (!response.ok) {
+      throw new Error("Failed to fetch events data");
+    }
+    const result = await response.json();
+    return result.events;
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return []; // Return an empty array on error
+  }
+};
+
+const filterEvents = (events) => {
+  if (filterValue === "All") {
+    return events;
+  }
+  return events.filter((event) => event.category === filterValue);
+};
 // Function to get the events and populate the event cards
 class EventCard {
   constructor(
@@ -231,13 +268,23 @@ class EventCard {
     return card;
   }
 }
+// Function to populate the events section
 const populateEvents = async () => {
+  const events = await fetchEvents();
+  const filteredEvents = filterEvents(events);
+  renderEvents(filteredEvents); // Call the function to render events
+};
+//Function to Render Events
+const renderEvents = async (events) => {
   const eventsContainer = document.querySelector(".find-events-container");
+  eventsContainer.innerHTML = ""; // Clear the container before populating
 
-  const events = await fetch("../data/events.json");
-  const result = await events.json();
+  if (events.length === 0) {
+    eventsContainer.innerHTML = "<p>No events found.</p>";
+    return;
+  }
 
-  result.events.forEach((event) => {
+  events.forEach((event) => {
     const newEventCard = new EventCard(
       event.title,
       event.image,
@@ -251,4 +298,7 @@ const populateEvents = async () => {
     eventsContainer.appendChild(newEventCard.createEventCard());
   });
 };
-populateEvents();
+
+
+populateEvents(); // Initial call to populate events on page load
+handleFilterButtons(); // Call the function to handle filter buttons
