@@ -19,13 +19,11 @@ const getCategories = async () => {
   const result = await categories.json();
   return result.categories;
 };
-
 class Category {
   constructor(description, imageUrl) {
     this.description = description;
     this.imageUrl = imageUrl;
   }
-
   createCategory() {
     const category = document.createElement("div");
     category.classList.add("category-item", "mx-auto");
@@ -57,3 +55,5 @@ const populateCategories = async () => {
 };
 
 populateCategories();
+
+

@@ -1,0 +1,133 @@
+{
+    "events": [
+      {
+        "title": "Let you go insane",
+        "date": "Tuesday - 22nd January 2024 - 22:00",
+        "location": "1901 Thornridge Cir. Shiloh, Hawaii 81063",
+        "host": "Annette Black",
+        "category": "Music",
+        "image": "https://source.unsplash.com/featured/?music"
+      },
+      {
+        "title": "We The Tribals",
+        "date": "Friday - 25th January 2024 - 19:00",
+        "location": "4140 Parker Rd. Allentown, New Mexico 31134",
+        "host": "Arlene McCoy",
+        "category": "Community",
+        "image": "https://source.unsplash.com/featured/?community"
+      },
+      {
+        "title": "Join Us For Humanity",
+        "date": "Tuesday - 27th February - 18:00",
+        "location": "3891 Ranchview Dr. Richardson, California 62639",
+        "host": "Marvin McKinney",
+        "category": "Community",
+        "image": "https://source.unsplash.com/featured/?community"
+      },
+      {
+        "title": "Save Earth",
+        "date": "Tuesday - 27th February - 18:00",
+        "location": "3571 W. Gray St. Utica, Pennsylvania 57867",
+        "host": "Jacob Jones",
+        "category": "Politics",
+        "image": "https://source.unsplash.com/featured/?politics"
+      },
+      {
+        "title": "Linkin Park Celebration",
+        "date": "Sunday - 14th February - 23:00",
+        "location": "3571 W. Gray St. Utica, Pennsylvania 57867",
+        "host": "Jerome Bell",
+        "category": "Music",
+        "image": "https://source.unsplash.com/featured/?music"
+      },
+      {
+        "title": "Together Stronger!",
+        "date": "Friday - 15th December 2023 - 12:00",
+        "location": "6397 Washington Ave. Manchester, Kentucky 39495",
+        "host": "Guy Hawkins",
+        "category": "Community",
+        "image": "https://source.unsplash.com/featured/?community"
+      },
+      {
+        "title": "We celebrate the...",
+        "date": "Sunday - 14th February - 23:00",
+        "location": "6397 Washington Ave. Manchester, Kentucky 39495",
+        "host": "Courtney Henry",
+        "category": "Community",
+        "image": "https://source.unsplash.com/featured/?community"
+      },
+      {
+        "title": "Food Life",
+        "date": "Tuesday - 27th February - 18:00",
+        "location": "8502 Preston Rd. Inglewood, Maine 98380",
+        "host": "Esther Howard",
+        "category": "Food & Drink",
+        "image": "https://source.unsplash.com/featured/?food,drink"
+      },
+      {
+        "title": "Mr. Tagore’s Kitchen",
+        "date": "Sunday - 14th February - 23:00",
+        "location": "8502 Preston Rd. Inglewood, Maine 98380",
+        "host": "Albert Flores",
+        "category": "Food & Drink",
+        "image": "https://source.unsplash.com/featured/?food,drink"
+      },
+      {
+        "title": "Music Party w/ Special Guests",
+        "date": "Friday - 25th January 2024 - 19:00",
+        "location": "3891 Ranchview Dr. Richardson, California 62639",
+        "host": "Jenny Wilson",
+        "category": "Music",
+        "image": "https://source.unsplash.com/featured/?music"
+      },
+      {
+        "title": "Musketeers are Live!",
+        "date": "Tuesday - 27th February - 18:00",
+        "location": "6391 Elgin St. Celina, Delaware 10299",
+        "host": "Floyd Miles",
+        "category": "Performing & Visual Arts",
+        "image": "https://source.unsplash.com/featured/?art,performance"
+      },
+      {
+        "title": "Dance with me",
+        "date": "Tuesday - 27th February - 18:00",
+        "location": "3891 Ranchview Dr. Richardson, California 62639",
+        "host": "Esther Howard",
+        "category": "Performing & Visual Arts",
+        "image": "https://source.unsplash.com/featured/?art,performance"
+      },
+      {
+        "title": "Join Me: Birthday Celebration",
+        "date": "Tuesday - 22nd January 2024 - 22:00",
+        "location": "1901 Thornridge Cir. Shiloh, Hawaii 81063",
+        "host": "Annette Black",
+        "category": "Community",
+        "image": "https://source.unsplash.com/featured/?community"
+      },
+      {
+        "title": "Freedom March: Justice for All",
+        "date": "Friday - 25th January 2024 - 19:00",
+        "location": "4140 Parker Rd. Allentown, New Mexico 31134",
+        "host": "Arlene McCoy",
+        "category": "Politics",
+        "image": "https://source.unsplash.com/featured/?politics"
+      },
+      {
+        "title": "Stop Wars Petition",
+        "date": "Tuesday - 27th February - 18:00",
+        "location": "3891 Ranchview Dr. Richardson, California 62639",
+        "host": "Marvin McKinney",
+        "category": "Politics",
+        "image": "https://source.unsplash.com/featured/?politics"
+      },
+      {
+        "title": "The Weeknd: Starboy Tour",
+        "date": "Tuesday - 27th February - 18:00",
+        "location": "3571 W. Gray St. Utica, Pennsylvania 57867",
+        "host": "Jacob Jones",
+        "category": "Music",
+        "image": "https://source.unsplash.com/featured/?music"
+      }
+    ]
+  }
+  

@@ -86,6 +86,62 @@ section{
   border-radius: 50%;
 }
 
+/*FIND EVENTS SECTION*/
+.filter-button.active{
+  border-bottom: 2px solid var(--light-cyan);
+}
+.find-events-container{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 2em;
+}
+
+.event-card {
+  border-radius: 10px;
+  font-size: 0.8rem;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  background-color: #fff2e5 !important;
+}
+
+.event-card img {
+  max-height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.event-card .btn {
+  border-radius: 50%;
+  padding: 5px 10px;
+}
+
+.event-card-title{
+  font-size: 1.5em !important;
+  font-weight: 600;
+}
+
+div.event-details{
+  gap: 0.5em ;
+  margin-bottom: 0.5em;
+}
+
+div.event-details p{
+  margin-bottom: 0.2em;
+}
+.event-time, .event-location{
+  font-size: 0.9em;
+}
+
+div.card-body{
+  padding: 0em ;
+  line-height: 1em;
+}
+.card-description {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
 
 
 @media (max-width: 768px) {
@@ -101,6 +157,7 @@ section{
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media (max-width: 570px) {
   img.category-img{
     width: 75px;
