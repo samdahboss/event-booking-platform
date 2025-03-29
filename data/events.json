@@ -5,128 +5,177 @@
         "date": "Tuesday - 22nd January 2024 - 22:00",
         "location": "1901 Thornridge Cir. Shiloh, Hawaii 81063",
         "host": "Annette Black",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Music",
-        "image": "https://source.unsplash.com/featured/?music"
+        "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7"
       },
       {
         "title": "We The Tribals",
         "date": "Friday - 25th January 2024 - 19:00",
         "location": "4140 Parker Rd. Allentown, New Mexico 31134",
         "host": "Arlene McCoy",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Community",
-        "image": "https://source.unsplash.com/featured/?community"
+        "image": "https://images.unsplash.com/photo-1515658323406-25d61c141a6e"
       },
       {
         "title": "Join Us For Humanity",
         "date": "Tuesday - 27th February - 18:00",
         "location": "3891 Ranchview Dr. Richardson, California 62639",
         "host": "Marvin McKinney",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Community",
-        "image": "https://source.unsplash.com/featured/?community"
+        "image": "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b"
       },
       {
         "title": "Save Earth",
         "date": "Tuesday - 27th February - 18:00",
         "location": "3571 W. Gray St. Utica, Pennsylvania 57867",
         "host": "Jacob Jones",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Politics",
-        "image": "https://source.unsplash.com/featured/?politics"
+        "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09"
       },
       {
         "title": "Linkin Park Celebration",
         "date": "Sunday - 14th February - 23:00",
         "location": "3571 W. Gray St. Utica, Pennsylvania 57867",
         "host": "Jerome Bell",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Music",
-        "image": "https://source.unsplash.com/featured/?music"
+        "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819"
       },
       {
         "title": "Together Stronger!",
         "date": "Friday - 15th December 2023 - 12:00",
         "location": "6397 Washington Ave. Manchester, Kentucky 39495",
         "host": "Guy Hawkins",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Community",
-        "image": "https://source.unsplash.com/featured/?community"
+        "image": "https://images.unsplash.com/photo-1522543558187-768b6df7c25c"
       },
       {
         "title": "We celebrate the...",
         "date": "Sunday - 14th February - 23:00",
         "location": "6397 Washington Ave. Manchester, Kentucky 39495",
         "host": "Courtney Henry",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Community",
-        "image": "https://source.unsplash.com/featured/?community"
+        "image": "https://images.unsplash.com/photo-1624006229221-2abd931f266b"
       },
       {
         "title": "Food Life",
         "date": "Tuesday - 27th February - 18:00",
         "location": "8502 Preston Rd. Inglewood, Maine 98380",
         "host": "Esther Howard",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Food & Drink",
-        "image": "https://source.unsplash.com/featured/?food,drink"
+        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "title": "Mr. Tagore’s Kitchen",
         "date": "Sunday - 14th February - 23:00",
         "location": "8502 Preston Rd. Inglewood, Maine 98380",
         "host": "Albert Flores",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Food & Drink",
-        "image": "https://source.unsplash.com/featured/?food,drink"
+        "image": "https://plus.unsplash.com/premium_photo-1663099970872-e1bdc46b7660?q=80&w=2143&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "title": "Music Party w/ Special Guests",
         "date": "Friday - 25th January 2024 - 19:00",
         "location": "3891 Ranchview Dr. Richardson, California 62639",
         "host": "Jenny Wilson",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Music",
-        "image": "https://source.unsplash.com/featured/?music"
+        "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        
       },
       {
         "title": "Musketeers are Live!",
         "date": "Tuesday - 27th February - 18:00",
         "location": "6391 Elgin St. Celina, Delaware 10299",
         "host": "Floyd Miles",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Performing & Visual Arts",
-        "image": "https://source.unsplash.com/featured/?art,performance"
+        "image": "https://images.unsplash.com/photo-1565103420311-8cbbc3cd87b8?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "title": "Dance with me",
         "date": "Tuesday - 27th February - 18:00",
         "location": "3891 Ranchview Dr. Richardson, California 62639",
         "host": "Esther Howard",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Performing & Visual Arts",
-        "image": "https://source.unsplash.com/featured/?art,performance"
+        "image": "https://images.unsplash.com/photo-1537365587684-f490102e1225?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "title": "Join Me: Birthday Celebration",
         "date": "Tuesday - 22nd January 2024 - 22:00",
         "location": "1901 Thornridge Cir. Shiloh, Hawaii 81063",
         "host": "Annette Black",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Community",
-        "image": "https://source.unsplash.com/featured/?community"
+        "image": "https://images.unsplash.com/photo-1623244727304-54995b233b1c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "title": "Freedom March: Justice for All",
         "date": "Friday - 25th January 2024 - 19:00",
         "location": "4140 Parker Rd. Allentown, New Mexico 31134",
         "host": "Arlene McCoy",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Politics",
-        "image": "https://source.unsplash.com/featured/?politics"
+        "image": "https://images.unsplash.com/photo-1597711662967-b5dac822f5ac?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "title": "Stop Wars Petition",
         "date": "Tuesday - 27th February - 18:00",
         "location": "3891 Ranchview Dr. Richardson, California 62639",
         "host": "Marvin McKinney",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Politics",
-        "image": "https://source.unsplash.com/featured/?politics"
+        "image": "https://images.unsplash.com/photo-1650984672581-8f305d4805ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "title": "The Weeknd: Starboy Tour",
         "date": "Tuesday - 27th February - 18:00",
         "location": "3571 W. Gray St. Utica, Pennsylvania 57867",
         "host": "Jacob Jones",
+        "followers": "23.5k",
+        "attendees": "1.2k",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "category": "Music",
-        "image": "https://source.unsplash.com/featured/?music"
+        "image": "https://images.unsplash.com/photo-1552267094-b4c3771bd5e4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       }
     ]
   }
