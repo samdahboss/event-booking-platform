@@ -1,3 +1,9 @@
+// Function to hide the preloader after 5seconds
+setTimeout(() => {
+  const preloader = document.getElementById("preloader");
+  preloader.style.display = "none"; // Hide the preloader
+}, 5000);
+
 //Function to get Navbar and add it to Page
 // document.addEventListener("DOMContentLoaded", function () {
 const header = document.getElementById("header");
@@ -10,15 +16,9 @@ const getNavBar = async () => {
     console.error("Error fetching navbar:", err);
   }
 };
-
 getNavBar();
-// });
 
-const getCategories = async () => {
-  const categories = await fetch("../data/categories.json");
-  const result = await categories.json();
-  return result.categories;
-};
+// Function to get the categories and populate the category section
 class Category {
   constructor(description, imageUrl) {
     this.description = description;
@@ -42,9 +42,14 @@ class Category {
     return category;
   }
 }
-
 const populateCategories = async () => {
   const categoriesContainer = document.getElementById("category-container");
+
+  const getCategories = async () => {
+    const categories = await fetch("../data/categories.json");
+    const result = await categories.json();
+    return result.categories;
+  };
 
   const categories = await getCategories();
 
@@ -53,9 +58,9 @@ const populateCategories = async () => {
     categoriesContainer.appendChild(newCategory.createCategory());
   });
 };
-
 populateCategories();
 
+// Function to get the events and populate the event cards
 class EventCard {
   constructor(
     title,
@@ -226,7 +231,6 @@ class EventCard {
     return card;
   }
 }
-
 const populateEvents = async () => {
   const eventsContainer = document.querySelector(".find-events-container");
 
@@ -247,5 +251,4 @@ const populateEvents = async () => {
     eventsContainer.appendChild(newEventCard.createEventCard());
   });
 };
-
 populateEvents();
