@@ -4,18 +4,34 @@ setTimeout(() => {
   preloader.style.display = "none"; // Hide the preloader
 }, 5000);
 
-//Function to get Navbar and add it to Page
-const getNavBar = async () => {
-  const header = document.getElementById("header");
-  try {
-    const navbar = await fetch("./components/navbar.html");
-    const navbarText = await navbar.text();
-    header.innerHTML = navbarText;
-  } catch (err) {
-    console.error("Error fetching navbar:", err);
-  }
-};
-getNavBar();
+function addComponents() {
+  //Function to get Navbar and add it to Page
+  const getNavBar = async () => {
+    const header = document.getElementById("header");
+    try {
+      const navbar = await fetch("./components/navbar.html");
+      const navbarText = await navbar.text();
+      header.innerHTML = navbarText;
+    } catch (err) {
+      console.error("Error fetching navbar:", err);
+    }
+  };
+  getNavBar();
+
+  // Function to get the carousel and add it to the page
+  const getCarousel = async () => {
+    const hero = document.getElementById("hero");
+    try {
+      const carousel = await fetch("./components/carousel.html");
+      const carouselText = await carousel.text();
+      hero.innerHTML = carouselText;
+    } catch (err) {
+      console.error("Error fetching navbar:", err);
+    }
+  };
+  getCarousel();
+}
+addComponents(); // Call the function to add components
 
 // Function to get the categories and populate the category section
 class Category {
@@ -298,7 +314,6 @@ const renderEvents = async (events) => {
     eventsContainer.appendChild(newEventCard.createEventCard());
   });
 };
-
 
 populateEvents(); // Initial call to populate events on page load
 handleFilterButtons(); // Call the function to handle filter buttons
