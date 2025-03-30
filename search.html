@@ -6,7 +6,16 @@
     <title>Document</title>
     <link rel="stylesheet" href="./styles/navbar.css" />
     <link rel="stylesheet" href="./styles/search.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
     <link rel="stylesheet" href="./styles/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./styles/footer.css" />
   </head>
   <body>
     <div
@@ -16,7 +25,238 @@
       <img src="./assets/event-logo.png" alt="logo" class="fade-in-out" />
     </div>
     <header id="header"></header>
-    <main id="main"><h1>Search</h1></main>
+    <main id="main">
+      <div class="container mt-3 mb-5">
+        <div class="row justify-content-between">
+          <div class="col-12 col-md-4 col-lg-2">
+            <div class="d-flex justify-content-between search-sidebar-header">
+              <h3 class="search-sidebar-title">Filters</h3>
+              <button class="reset-btn">Reset</button>
+            </div>
+            <div class="search-sidebar-content d-flex flex-column gap-3">
+              <div class="filter-item">
+                <h4 class="filter-item-title">Date</h4>
+                <div class="filter-item-content">
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="date-option1"
+                      name="date-option"
+                      value="option1"
+                      checked
+                    />
+                    <label for="date-option1">All</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="date-option2"
+                      name="date-option"
+                      value="option1"
+                    />
+                    <label for="date-option2">Today</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="date-option3"
+                      name="date-option"
+                      value="option1"
+                    />
+                    <label for="date-option3">Tommorow</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="date-option4"
+                      name="date-option"
+                      value="option1"
+                    />
+                    <label for="date-option4">This weekend</label>
+                  </div>
+                </div>
+              </div>
+              <div class="filter-item">
+                <h4 class="filter-item-title">Price</h4>
+                <div class="filter-item-content">
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="price-option1"
+                      name="price-option"
+                      value="option1"
+                      checked
+                    />
+                    <label for="price-option1">Both</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="price-option2"
+                      name="price-option"
+                      value="option1"
+                    />
+                    <label for="price-option2">Free</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="radio"
+                      id="price-option3"
+                      name="price-option"
+                      value="option1"
+                    />
+                    <label for="price-option3">Priced</label>
+                  </div>
+                </div>
+              </div>
+              <div class="filter-item">
+                <h4 class="filter-item-title">Category</h4>
+                <div class="filter-item-content">
+                  <div class="filter-option">
+                    <input
+                      type="checkbox"
+                      id="category-option1"
+                      name="category-option"
+                      value="option1"
+                      checked
+                    />
+                    <label for="category-option1">Food & Drink</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="checkbox"
+                      id="category-option2"
+                      name="category-option"
+                      value="option1"
+                    />
+                    <label for="category-option2">Music</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="checkbox"
+                      id="category-option3"
+                      name="category-option"
+                      value="option1"
+                    />
+                    <label for="category-option3">Visual Arts</label>
+                  </div>
+
+                  <div class="filter-option">
+                    <input
+                      type="checkbox"
+                      id="category-option4"
+                      name="category-option"
+                      value="option1"
+                    />
+                    <label for="category-option4">Politics</label>
+                  </div>
+                  <div class="filter-option">
+                    <input
+                      type="checkbox"
+                      id="category-option5"
+                      name="category-option"
+                      value="option1"
+                    />
+                    <label for="category-option5">Community</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-8 col-lg-8">
+            <h3>Results</h3>
+            <div class="search-results d-flex flex-column gap-2">
+              <div class="card search-event-card event-card">
+                <div class="position-relative search-img-container">
+                  <img
+                    src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09"
+                    class="card-img-top"
+                    alt="Event Image"
+                  />
+                  <div class="position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-light">
+                      <i class="fas fa-share-alt"></i></button
+                    ><button class="btn btn-light">
+                      <i class="far fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="event-card-title">Save Earth</h5>
+                  <div class="d-flex flex-column event-details">
+                    <p class="card-text event-time">
+                      Tuesday - 27th February - 18:00
+                    </p>
+                    <p class="event-location">
+                      3571 W. Gray St. Utica, Pennsylvania 57867
+                    </p>
+                    <p
+                      class="event-organizer d-flex justify-content-between gap-2"
+                    >
+                      <span class="text-decoration-underline">Jacob Jones</span
+                      ><span class="text-muted">23.5k followers</span>
+                    </p>
+                  </div>
+                  <p class="text-muted">
+                    <span>1.2k people</span> are attending this event.
+                  </p>
+                  <p class="card-description text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+              </div>
+              <div class="card search-event-card event-card">
+                <div class="position-relative search-img-container">
+                  <img
+                    src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b"
+                    class="card-img-top"
+                    alt="Event Image"
+                  />
+                  <div class="position-absolute top-0 end-0 p-2">
+                    <button class="btn btn-light">
+                      <i class="fas fa-share-alt"></i></button
+                    ><button class="btn btn-light">
+                      <i class="far fa-heart"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="event-card-title">Join Us For Humanity</h5>
+                  <div class="d-flex flex-column event-details">
+                    <p class="card-text event-time">
+                      Tuesday - 27th February - 18:00
+                    </p>
+                    <p class="event-location">
+                      3891 Ranchview Dr. Richardson, California 62639
+                    </p>
+                    <p
+                      class="event-organizer d-flex justify-content-between gap-2"
+                    >
+                      <span class="text-decoration-underline"
+                        >Marvin McKinney</span
+                      ><span class="text-muted">23.5k followers</span>
+                    </p>
+                  </div>
+                  <p class="text-muted">
+                    <span>1.2k people</span> are attending this event.
+                  </p>
+                  <p class="card-description text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2">
+            <h3>Map</h3>
+          </div>
+        </div>
+      </div>
+    </main>
     <footer id="footer"></footer>
 
     <script src="./scripts/search.js"></script>

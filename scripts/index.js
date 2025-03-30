@@ -30,6 +30,18 @@ function addComponents() {
     }
   };
   getCarousel();
+
+  const getFooter = async () => {
+    const footer = document.getElementById("footer");
+    try {
+      const footerMarkup = await fetch("./components/footer.html");
+      const footerMarkupText = await footerMarkup.text();
+      footer.innerHTML = footerMarkupText;
+    } catch (err) {
+      console.error("Error fetching navbar:", err);
+    }
+  };
+  getFooter();
 }
 addComponents(); // Call the function to add components
 

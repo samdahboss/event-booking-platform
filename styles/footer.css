@@ -1,0 +1,19 @@
+.footer a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .footer a:hover {
+    color: white;
+  }
+  
+  .footer .btn-warning {
+    background-color: var(--orange);
+    border: none;
+  }
+  
+  .footer .btn-warning:hover {
+    background-color: var(--light-orange);
+  }
+  
