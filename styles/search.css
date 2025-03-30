@@ -26,32 +26,41 @@ h3.search-sidebar-title {
   gap: 0.5em;
 }
 
-.filter-option input:checked{
-    accent-color: var(--dark-cyan);
+.filter-option input:checked {
+  accent-color: var(--dark-cyan);
 }
 .filter-option input:checked + label {
   color: var(--dark-cyan);
 }
 
-div.search-event-card{
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    gap: 1em;
-    background-color: #fff !important;
+.search-results {
+  max-height: 70vh;
+  overflow-y: scroll; 
+  scrollbar-width: thin !important; 
+  scrollbar-color: var(--dark-cyan) #f1f1f1 !important;
 }
 
-.search-img-container{
-    width: 50%;
-    display: flex;
-    align-items: center;
+
+div.search-event-card {
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  gap: 1em;
+  background-color: #fff !important;
+  min-height: 227px;
 }
 
-div.search-event-card .card-body{
-    width: 50%;
+.search-img-container {
+  width: 50%;
+  display: flex;
+  align-items: center;
 }
-div.search-event-card img{
-    max-height: 100%;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+
+div.search-event-card .card-body {
+  width: 50%;
+}
+div.search-event-card img {
+  max-height: 100%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
