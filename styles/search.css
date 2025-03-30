@@ -34,10 +34,12 @@ h3.search-sidebar-title {
 }
 
 .search-results {
-  max-height: 70vh;
+  height: 75vh;
+  max-height: 1000px;
   overflow-y: scroll; 
   scrollbar-width: thin !important; 
   scrollbar-color: var(--dark-cyan) #f1f1f1 !important;
+  align-items: center !important;
 }
 
 

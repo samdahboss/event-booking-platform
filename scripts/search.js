@@ -35,25 +35,6 @@ const getComponents = () => {
 
 getComponents();
 
-// Function to fetch events data from json file and store it in local storage
-const fetchEvents = async () => {
-  try {
-    const response = await fetch("../data/events.json");
-    if (!response.ok) {
-      throw new Error("Failed to fetch events data");
-    }
-    const result = await response.json();
-    localStorage.setItem("events", JSON.stringify(result.events)); // Store events in local storage
-    return result.events;
-  } catch (error) {
-    console.error("Error fetching events:", error);
-    return []; // Return an empty array on error
-  }
-};
-// fetchEvents();
-
-const allEvents = JSON.parse(localStorage.getItem("events"));
-
 class SearchEventCard {
   constructor(event) {
     this.event = event;
@@ -207,22 +188,81 @@ class SearchEventCard {
   }
 }
 
-console.log(allEvents)
+// Function to fetch events data from json file and store it in local storage
+const fetchEvents = async () => {
+  try {
+    const response = await fetch("../data/events.json");
+    if (!response.ok) {
+      throw new Error("Failed to fetch events data");
+    }
+    const result = await response.json();
+    localStorage.setItem("events", JSON.stringify(result.events)); // Store events in local storage
+    return JSON.parse(localStorage.getItem("events")); // Return the events data
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return []; // Return an empty array on error
+  }
+};
 
 const renderCards = async (events) => {
-  const searchResults = document.querySelector(".search-results")
+  const searchResults = document.querySelector(".search-results");
   searchResults.innerHTML = ""; // Clear previous results
 
-  if (events.length === 0){
-    searchResults.innerHTML = `<p class="text-center">No results found.</p>`;
+  if (events.length === 0) {
+    searchResults.innerHTML = `<p class="text-center my-auto">No results found.</p>`;
     return;
   }
 
-  events.forEach((event)=>{
+  events.forEach((event) => {
     const newResult = new SearchEventCard(event);
 
     searchResults.appendChild(newResult.createEventCard());
-  })
+  });
+};
+
+// Function to check if events are already in local storage
+const allEvents = JSON.parse(localStorage.getItem("events"));
+
+if (!allEvents) {
+  fetchEvents()
+    .then((events) => {
+      renderCards(events); // Render events after fetching
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+} else {
+  renderCards(allEvents); // Render all events on page load
 }
 
-renderCards(allEvents);
+const searchEvents = async (query) => {
+  const events = JSON.parse(localStorage.getItem("events"));
+  const searchResults = events.filter((event) => {
+    return (
+      event.title.toLowerCase().includes(query.toLowerCase()) ||
+      event.location.toLowerCase().includes(query.toLowerCase()) ||
+      event.description.toLowerCase().includes(query.toLowerCase())
+    );
+  });
+  return searchResults;
+};
+
+
+const filterEvents = async (query) => {
+
+}
+setTimeout(() => {
+  const searchInput = document.getElementById("search-input");
+  const searchButton = document.getElementById("search-btn");
+
+  searchButton.addEventListener("click", async (e) => {
+    e.preventDefault(); // Prevent form submission
+    const query = searchInput.value.trim(); // Get the search query
+    if (query === "") {
+      renderCards([]);
+      return; // Do nothing if the input is empty
+    }
+    const searchResults = await searchEvents(query); // Fetch events from local storage
+    renderCards(searchResults); // Render the filtered events
+  });
+}, 1000);
