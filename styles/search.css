@@ -51,7 +51,7 @@ div.search-event-card .card-body {
   width: 50%;
 }
 div.search-event-card img {
-  max-height: 100%;
+  max-height: 183px;
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -98,6 +98,57 @@ div.search-event-card img {
   height: 90%;
 }
 
+@media (max-width: 1200px) {
+  .filter-panel {
+    position: absolute;
+    z-index: 300;
+    background-color: #fff;
+    width: 100%;
+  }
+  .map-panel {
+    display: none;
+  }
+  .filter-panel{
+    width: 100% !important;
+  }
+  .results-panel{
+    width: 100% !important;
+  }
+  .filter-panel.active {
+    height: 100%;
+  }
+  .filter-close-btn.active {
+    display: block;
+  }
+
+  .show-filter-btn.active {
+    display: block;
+  }
+  h3.search-sidebar-title {
+    margin-bottom: 0em;
+  }
+
+  .search-sidebar-content {
+    display: none;
+  }
+
+  .search-sidebar-content.active {
+    display: flex;
+  }
+
+  .search-sidebar-btns {
+    display: block;
+  }
+  .search-results {
+    max-height: none;
+    height: auto;
+  }
+
+  body.overflow-hidden {
+    overflow: hidden;
+  }
+}
+
 @media (max-width: 768px) {
   div.search-event-card {
     flex-direction: column !important;
@@ -111,50 +162,6 @@ div.search-event-card img {
     width: 100%;
     display: flex;
     align-items: center;
-  }
-
-  .search-sidebar-btns {
-    display: block;
-  }
-  .search-results {
-    max-height: none;
-    height: auto;
-  }
-  .map-panel {
-    display: none;
-  }
-
-  .filter-panel {
-    position: absolute;
-    z-index: 300;
-    background-color: #fff;
-  }
-
-  .filter-panel.active {
-    height: 100%;
-  }
-  .filter-close-btn.active {
-    display: block;
-  }
-
-
-  .show-filter-btn.active {
-    display: block;
-  }
-  h3.search-sidebar-title {
-    margin-bottom: 0em;
-  }
-
-  .search-sidebar-content{
-    display: none;
-  }
-
-  .search-sidebar-content.active {
-    display: flex;
-  }
-
-  body.overflow-hidden {
-    overflow: hidden;
   }
 }
 
