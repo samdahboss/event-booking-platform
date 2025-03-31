@@ -28,12 +28,19 @@
     <main id="main">
       <div class="container mt-3 mb-5">
         <div class="row justify-content-between">
-          <div class="col-12 col-md-4 col-lg-2">
+          <div class="col-12 col-md-4 col-lg-2 filter-panel">
             <div class="d-flex justify-content-between search-sidebar-header">
               <h3 class="search-sidebar-title">Filters</h3>
-              <button class="reset-btn">Reset</button>
+              <div class="search-sidebar-btns">
+                <button class="filter-close-btn">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+                <span class="text-decoration-underline show-filter-btn active"
+                  >Show filters</span
+                >
+              </div>
             </div>
-            <div class="search-sidebar-content d-flex flex-column gap-3">
+            <div class="search-sidebar-content flex-column gap-3">
               <div class="filter-item">
                 <h4 class="filter-item-title">Date</h4>
                 <div class="filter-item-content">
@@ -179,13 +186,14 @@
               </div>
 
               <button class="apply-filter">Apply Filters</button>
+              <button class="reset-btn">Reset Filters</button>
             </div>
           </div>
           <div class="col-12 col-md-8 col-lg-6">
             <h3>Results</h3>
             <div class="search-results d-flex flex-column gap-2"></div>
           </div>
-          <div class="col-12 col-md-4 col-lg-2">
+          <div class="col-12 col-md-4 col-lg-2 map-panel">
             <h3>Map</h3>
           </div>
         </div>

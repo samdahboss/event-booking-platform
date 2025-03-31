@@ -7,15 +7,6 @@ h3.search-sidebar-title {
   margin-bottom: 1em;
 }
 
-.reset-btn {
-  border: none;
-  background-color: transparent;
-  outline: none;
-  text-decoration: underline;
-  color: var(--light-cyan);
-  height: fit-content;
-}
-
 .filter-item-title {
   font-size: 1em;
   margin-bottom: 0.5em;
@@ -36,12 +27,11 @@ h3.search-sidebar-title {
 .search-results {
   height: 75vh;
   max-height: 1000px;
-  overflow-y: scroll; 
-  scrollbar-width: thin !important; 
+  overflow-y: scroll;
+  scrollbar-width: thin !important;
   scrollbar-color: var(--dark-cyan) #f1f1f1 !important;
   align-items: center !important;
 }
-
 
 div.search-event-card {
   flex-direction: row !important;
@@ -75,4 +65,106 @@ div.search-event-card img {
   border-radius: 50px;
   font-size: 0.8em;
   padding: 0.5em 0em;
+}
+
+.reset-btn {
+  background-color: var(--light-cyan);
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.8em;
+  padding: 0.5em 0em;
+}
+
+.search-sidebar-btns {
+  display: none;
+}
+.filter-close-btn {
+  outline: none;
+  height: fit-content;
+  border: none;
+  background-color: transparent;
+  display: none;
+}
+
+.show-filter-btn {
+  display: none;
+}
+
+.search-sidebar-content {
+  display: flex;
+  padding-top: 2em;
+  height: 90%;
+}
+
+@media (max-width: 768px) {
+  div.search-event-card {
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 0.5em;
+  }
+  div.search-event-card .card-body {
+    width: 100%;
+  }
+  .search-img-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-sidebar-btns {
+    display: block;
+  }
+  .search-results {
+    max-height: none;
+    height: auto;
+  }
+  .map-panel {
+    display: none;
+  }
+
+  .filter-panel {
+    position: absolute;
+    z-index: 300;
+    background-color: #fff;
+  }
+
+  .filter-panel.active {
+    height: 100%;
+  }
+  .filter-close-btn.active {
+    display: block;
+  }
+
+  .show-filter-btn.active {
+    display: block;
+  }
+  h3.search-sidebar-title {
+    margin-bottom: 0em;
+  }
+
+  .search-sidebar-content {
+    display: none;
+  }
+
+  body.overflow-hidden {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  div.search-event-card {
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 0.5em;
+  }
+  div.search-event-card .card-body {
+    width: 100%;
+  }
+  .search-img-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
 }

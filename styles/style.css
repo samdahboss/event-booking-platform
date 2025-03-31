@@ -196,6 +196,15 @@ div.card-body {
   .event-card {
     padding: 0.5em;
   }
+
+  ul.event-list{
+    overflow-x: scroll;
+    justify-content: flex-start;
+    padding: 0.5em 0 !important;
+  }
+  .filter-button{
+    font-size: 0.8em;
+  }
 }
 
 @media (max-width: 570px) {
@@ -213,5 +222,9 @@ div.card-body {
   }
   .find-events-container {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  .filter-button{
+    font-size: 0.6em;
   }
 }

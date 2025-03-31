@@ -1,5 +1,5 @@
 const preloader = document.getElementById("preloader");
-preloader.style.display = "none"; //hide reploader in development
+preloader.style.display = "none"; //hide reloader in development
 // Function to hide the preloader after 5seconds
 setTimeout(() => {
   preloader.style.display = "none"; // Hide the preloader
@@ -33,6 +33,31 @@ const getComponents = () => {
   getFooter();
 };
 getComponents();
+
+// Function to toggle mobile filter menu
+(() => {
+  const filterClose = document.querySelector(".filter-close-btn");
+  const filterShowBtn = document.querySelector(".show-filter-btn");
+  const filterMenu = document.querySelector(".search-sidebar-content");
+  const filterMenuContainer = document.querySelector(".filter-panel");
+  const body = document.querySelector("body");
+
+  filterClose.addEventListener("click", () => {
+    filterMenu.style.display = "none"; // Hide the filter menu
+    filterClose.classList.remove("active");
+    filterShowBtn.classList.add("active");
+    filterMenuContainer.classList.remove("active");
+    body.classList.remove("overflow-hidden"); // Remove overflow hidden class from body
+  });
+
+  filterShowBtn.addEventListener("click", () => {
+    filterMenuContainer.classList.add("active");
+    filterMenu.style.display = "flex"; // Show the filter menu
+    filterShowBtn.classList.remove("active");
+    filterClose.classList.add("active");
+    body.classList.add("overflow-hidden"); // Add overflow hidden class to body
+  });
+})();
 
 // Function to create the search event card
 // This class is responsible for creating the event card elements
@@ -218,6 +243,53 @@ const searchEvents = async (query) => {
   });
   return searchResults;
 };
+// Function to handle search functionality
+// This function is responsible for searching events based on user input
+setTimeout(() => {
+  const searchInput = document.getElementById("search-input");
+  const searchButton = document.getElementById("search-btn");
+  const searchForm = document.querySelector("#search-form");
+
+  const hasQueryParam = (param) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.has(param); // Returns true if the parameter exists, false otherwise
+  };
+
+  const getQueryParam = (param) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param); // Returns the value of the parameter or null if it doesn't exist
+  };
+
+  const searchFilterRender = async (query) => {
+    if (query === "") {
+      renderCards([], query);
+      return; // Do nothing if the input is empty
+    }
+    const searchResults = await searchEvents(query); // Fetch events from local storage
+    const filteredEvents = await filterEvents(searchResults); // Filter events based on user preferences
+    localStorage.setItem("matchingEvents", JSON.stringify(filteredEvents)); // Store matching events in local storage
+    renderCards(filteredEvents, query); // Render the filtered events
+  };
+
+  // Example usage
+  if (hasQueryParam("query")) {
+    const query = getQueryParam("query"); // Get the value of the 'query' parameter
+    searchFilterRender(query); // Call the search filter and render function
+  }
+
+  searchForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent form submission
+  });
+
+  searchButton.addEventListener("click", async (e) => {
+    e.preventDefault(); // Prevent form submission
+
+    const query = searchInput.value.trim(); // Get the search query
+    searchInput.value = ""; // Clear the search input
+
+    searchFilterRender(query); // Call the search filter and render function
+  });
+}, 1000);
 
 //FILTERING LOGIC
 // Function to get filter preferences from the form inputs
@@ -440,49 +512,3 @@ const checkLocalStorage = () => {
   }
 };
 checkLocalStorage(); // Call the function to check local storage
-
-setTimeout(() => {
-  const searchInput = document.getElementById("search-input");
-  const searchButton = document.getElementById("search-btn");
-  const searchForm = document.querySelector("#search-form");
-
-  const hasQueryParam = (param) => {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.has(param); // Returns true if the parameter exists, false otherwise
-  };
-
-  const getQueryParam = (param) => {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param); // Returns the value of the parameter or null if it doesn't exist
-  };
-
-  const searchFilterRender = async (query) => {
-    if (query === "") {
-      renderCards([], query);
-      return; // Do nothing if the input is empty
-    }
-    const searchResults = await searchEvents(query); // Fetch events from local storage
-    const filteredEvents = await filterEvents(searchResults); // Filter events based on user preferences
-    localStorage.setItem("matchingEvents", JSON.stringify(filteredEvents)); // Store matching events in local storage
-    renderCards(filteredEvents, query); // Render the filtered events
-  };
-
-  // Example usage
-  if (hasQueryParam("query")) {
-    const query = getQueryParam("query"); // Get the value of the 'query' parameter
-    searchFilterRender(query); // Call the search filter and render function
-  }
-
-  searchForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevent form submission
-  });
-
-  searchButton.addEventListener("click", async (e) => {
-    e.preventDefault(); // Prevent form submission
-    
-    const query = searchInput.value.trim(); // Get the search query
-    searchInput.value = ""; // Clear the search input
-
-    searchFilterRender(query); // Call the search filter and render function
-  });
-}, 1000);
