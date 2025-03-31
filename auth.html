@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In & Sign Up</title>
+    <link rel="stylesheet" href="./styles/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./styles/auth.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="form-container" id="sign-in">
+        <h2>Welcome back!</h2>
+        <input
+          type="email"
+          placeholder="Email address"
+          class="sign-in-email"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          class="sign-in-password"
+          required
+        />
+        <button class="sign-in-btn">Sign in</button>
+        <p class="switch">
+          Don't have an account? <a href="#" onclick="toggleForm()">Sign up</a>
+        </p>
+      </div>
+      <div class="form-container" id="sign-up" style="display: none">
+        <h2>Get started now</h2>
+        <input type="text" placeholder="Name" class="sign-up-name" required />
+        <input
+          type="email"
+          placeholder="Email address"
+          class="sign-up-email"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          class="sign-up-password"
+          required
+        />
+        <button class="sign-up-btn">Sign up</button>
+        <p class="switch">
+          Have an account? <a href="#" onclick="toggleForm()">Sign in</a>
+        </p>
+      </div>
+      <div class="image-container"></div>
+    </div>
+
+    <script src="./scripts/auth.js"></script>
+  </body>
+</html>
