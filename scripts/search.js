@@ -195,7 +195,7 @@ const renderCards = async (events, query) => {
   searchResults.innerHTML = ""; // Clear previous results
 
   if (events.length === 0) {
-    searchResults.innerHTML = `<p class="text-center my-auto">No results found for "${query || ""}". Try "We" or "Music"</p>`;
+    searchResults.innerHTML = `<p class="text-center my-auto">No results found for "${query || ""}" that matches the specified criteria.</p>`;
     return;
   }
 
@@ -269,8 +269,17 @@ const filterEvents = async (events) => {
     // Remove ordinal suffixes (e.g., "22nd" -> "22")
     const withoutSuffix = withoutDay.replace(/(\d+)(st|nd|rd|th)/, "$1");
 
+    //Remove Time (e.g., "-22:00" -> "")
+    const withoutTime = withoutSuffix.replace(/-\s*\d{2}:\d{2}$/, "").trim();
+
+    // Rearrange the date string to "Month dd, yyyy"
+    const formattedDate = withoutTime.replace(
+      /^(\d+)\s(\w+)\s(\d{4})$/,
+      "$2 $1, $3"
+    );
+
     // Convert to a standard date format
-    const standardDate = new Date(withoutSuffix);
+    const standardDate = new Date(formattedDate);
 
     // Return the parsed Date object
     return standardDate;
@@ -410,7 +419,7 @@ const fetchEvents = async () => {
     return []; // Return an empty array on error
   }
 };
-
+fetchEvents(); // Call the function to fetch events data
 // Function to check if events are already in local storage
 const checkLocalStorage = () => {
   const allEvents = JSON.parse(localStorage.getItem("events"));
@@ -442,7 +451,7 @@ setTimeout(() => {
 
   searchButton.addEventListener("click", async (e) => {
     e.preventDefault(); // Prevent form submission
-    searchButton.value=""
+    searchButton.value = "";
     const query = searchInput.value.trim(); // Get the search query
     if (query === "") {
       renderCards([], query);
