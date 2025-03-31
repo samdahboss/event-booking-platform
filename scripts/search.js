@@ -394,6 +394,7 @@ resetFilterPreference(); // Call the function to add reset functionality to butt
 
 const applyFilter = async () => {
   const applyFilterBtn = document.querySelector(".apply-filter");
+
   applyFilterBtn.addEventListener("click", async (e) => {
     e.preventDefault(); // Prevent form submission
     const matchingEvents = JSON.parse(localStorage.getItem("matchingEvents"));
@@ -445,14 +446,17 @@ setTimeout(() => {
   const searchButton = document.getElementById("search-btn");
   const searchForm = document.querySelector("#search-form");
 
-  searchForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevent form submission
-  });
+  const hasQueryParam = (param) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.has(param); // Returns true if the parameter exists, false otherwise
+  };
 
-  searchButton.addEventListener("click", async (e) => {
-    e.preventDefault(); // Prevent form submission
-    searchButton.value = "";
-    const query = searchInput.value.trim(); // Get the search query
+  const getQueryParam = (param) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param); // Returns the value of the parameter or null if it doesn't exist
+  };
+
+  const searchFilterRender = async (query) => {
     if (query === "") {
       renderCards([], query);
       return; // Do nothing if the input is empty
@@ -461,5 +465,24 @@ setTimeout(() => {
     const filteredEvents = await filterEvents(searchResults); // Filter events based on user preferences
     localStorage.setItem("matchingEvents", JSON.stringify(filteredEvents)); // Store matching events in local storage
     renderCards(filteredEvents, query); // Render the filtered events
+  };
+
+  // Example usage
+  if (hasQueryParam("query")) {
+    const query = getQueryParam("query"); // Get the value of the 'query' parameter
+    searchFilterRender(query); // Call the search filter and render function
+  }
+
+  searchForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent form submission
+  });
+
+  searchButton.addEventListener("click", async (e) => {
+    e.preventDefault(); // Prevent form submission
+    
+    const query = searchInput.value.trim(); // Get the search query
+    searchInput.value = ""; // Clear the search input
+
+    searchFilterRender(query); // Call the search filter and render function
   });
 }, 1000);
