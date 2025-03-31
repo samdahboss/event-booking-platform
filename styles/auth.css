@@ -74,3 +74,40 @@ body {
 .switch a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .form-container,
+  .image-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .image-container {
+    border-radius: 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 20px;
+  }
+
+  .form-container h2 {
+    font-size: 24px;
+  }
+
+  .form-container input {
+    padding: 8px;
+    margin: 8px 0;
+  }
+
+  .form-container button {
+    padding: 8px;
+    font-size: 16px;
+  }
+}
