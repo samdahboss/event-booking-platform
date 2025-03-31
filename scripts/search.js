@@ -43,7 +43,7 @@ getComponents();
   const body = document.querySelector("body");
 
   filterClose.addEventListener("click", () => {
-    filterMenu.style.display = "none"; // Hide the filter menu
+    filterMenu.classList.remove("active"); // Hide the filter menu
     filterClose.classList.remove("active");
     filterShowBtn.classList.add("active");
     filterMenuContainer.classList.remove("active");
@@ -52,7 +52,7 @@ getComponents();
 
   filterShowBtn.addEventListener("click", () => {
     filterMenuContainer.classList.add("active");
-    filterMenu.style.display = "flex"; // Show the filter menu
+    filterMenu.classList.add("active"); // Show the filter menu
     filterShowBtn.classList.remove("active");
     filterClose.classList.add("active");
     body.classList.add("overflow-hidden"); // Add overflow hidden class to body

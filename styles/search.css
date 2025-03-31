@@ -137,6 +137,7 @@ div.search-event-card img {
     display: block;
   }
 
+
   .show-filter-btn.active {
     display: block;
   }
@@ -144,8 +145,12 @@ div.search-event-card img {
     margin-bottom: 0em;
   }
 
-  .search-sidebar-content {
+  .search-sidebar-content{
     display: none;
+  }
+
+  .search-sidebar-content.active {
+    display: flex;
   }
 
   body.overflow-hidden {
