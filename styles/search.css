@@ -66,3 +66,13 @@ div.search-event-card img {
   width: 100%;
   object-fit: cover;
 }
+
+.apply-filter {
+  background-color: #b1761f;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.8em;
+  padding: 0.5em 0em;
+}
