@@ -118,6 +118,9 @@ section {
 }
 
 /*FIND EVENTS SECTION*/
+.filter-button {
+  cursor: pointer;
+}
 .filter-button.active {
   border-bottom: 2px solid var(--light-cyan);
 }

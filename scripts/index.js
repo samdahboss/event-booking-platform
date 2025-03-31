@@ -334,14 +334,23 @@ setTimeout(() => {
   const searchButton = document.getElementById("search-btn");
   const searchInput = document.getElementById("search-input");
 
-  searchButton.addEventListener("click", async (e) => {
+  const searchForm = document.getElementById("search-form");
+
+  searchForm.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent form submission
 
     const query = searchInput.value.trim(); // Get the search query
 
     // Redirect to the search page with the query as a URL parameter
     window.location.href = `../search.html?query=${encodeURIComponent(query)}`;
-    
+  });
+
+  searchButton.addEventListener("click", async () => {
+    const query = searchInput.value.trim(); // Get the search query
+
+    // Redirect to the search page with the query as a URL parameter
+    window.location.href = `../search.html?query=${encodeURIComponent(query)}`;
+
     searchInput.value = ""; // Clear the search input field
   });
 }, 1000); // Delay the event listener attachment by 1 seconds
