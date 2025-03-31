@@ -188,7 +188,7 @@ class SearchEventCard {
   }
 }
 
-// Function to fetch events data from json file and store it in local storage
+// Function to fetch events data from json file and store it in local storage if it's not already there
 const fetchEvents = async () => {
   try {
     const response = await fetch("../data/events.json");
@@ -221,19 +221,22 @@ const renderCards = async (events) => {
 };
 
 // Function to check if events are already in local storage
-const allEvents = JSON.parse(localStorage.getItem("events"));
+const checkLocalStorage = () => {
+  const allEvents = JSON.parse(localStorage.getItem("events"));
 
-if (!allEvents) {
-  fetchEvents()
-    .then((events) => {
-      renderCards(events); // Render events after fetching
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-} else {
-  renderCards(allEvents); // Render all events on page load
-}
+  if (!allEvents) {
+    fetchEvents() // Fetch events from JSON file and store in local storage if there are none
+      .then((events) => {
+        renderCards(events); // Render events after fetching
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  } else {
+    renderCards(allEvents); // Render all events on page load
+  }
+};
+checkLocalStorage(); // Call the function to check local storage
 
 const searchEvents = async (query) => {
   const events = JSON.parse(localStorage.getItem("events"));
@@ -247,10 +250,100 @@ const searchEvents = async (query) => {
   return searchResults;
 };
 
+const parseCustomDate = (dateString) => {
+  // Remove the day of the week (e.g., "Tuesday - ")
+  const withoutDay = dateString.replace(/^[A-Za-z]+\s-\s/, "");
 
-const filterEvents = async (query) => {
+  // Remove ordinal suffixes (e.g., "22nd" -> "22")
+  const withoutSuffix = withoutDay.replace(/(\d+)(st|nd|rd|th)/, "$1");
 
-}
+  // Convert to a standard date format
+  const standardDate = new Date(withoutSuffix);
+
+  // Return the parsed Date object
+  return standardDate;
+};
+
+const filterPreference = {
+  date: "All",
+  price: "Both",
+  category: {
+    "Food & Drink": true,
+    Music: true,
+    "Visual Arts": true,
+    Politics: true,
+    Community: true,
+  },
+};
+
+const resetFilterPreference = () => {
+  const resetFilterButton = document.querySelector(".reset-btn");
+  resetFilterButton.addEventListener("click", (e) => {
+    e.preventDefault(); // Prevent form submission
+    filterPreference.date = "All"; // Reset date filter
+    filterPreference.price = "Both"; // Reset price filter
+    filterPreference.category = {
+      "Food & Drink": true,
+      Music: true,
+      "Visual Arts": true,
+      Politics: true,
+      Community: true,
+    }; // Reset category filter
+
+    const dateInputs = document.querySelectorAll(".date-option");
+    dateInputs.forEach((input) => {
+      input.checked = false; // Uncheck all date options
+      if (input.value === "all") {
+        input.checked = true; // Check the "All" option
+      }
+    });
+
+    const priceInputs = document.querySelectorAll(".price-option");
+    priceInputs.forEach((input) => {
+      input.checked = false; // Uncheck all price options
+      if (input.value === "Both") {
+        input.checked = true; // Check the "Both" option
+      }
+    });
+
+    const categoryInputs = document.querySelectorAll(".category-option");
+    categoryInputs.forEach((input) => {
+      input.checked = true; // check all category options
+    });
+  });
+};
+resetFilterPreference(); // Call the function to add reset functionality to button
+
+const getFilterPreferences = () => {
+  const dateInputs = document.querySelectorAll(".date-option");
+  dateInputs.forEach((input) => {
+    input.addEventListener("click", (e) => {
+      const value = e.target.value;
+      filterPreference.date = value; // Set the selected date
+    });
+  });
+
+  const priceInputs = document.querySelectorAll(".price-option");
+  priceInputs.forEach((input) => {
+    input.addEventListener("click", (e) => {
+      const value = e.target.value;
+      filterPreference.price = value; // Set the selected price range
+    });
+  });
+
+  const categoryInputs = document.querySelectorAll(".category-option");
+  categoryInputs.forEach((input) => {
+    input.addEventListener("click", (e) => {
+      const selectedValue = e.target.value; // Get the value of the selected checkbox
+      filterPreference.category[selectedValue] =
+        !filterPreference.category[selectedValue];
+    });
+  });
+};
+getFilterPreferences(); // Call the function to get filter preferences
+
+const filterEvents = async (query) => {};
+
 setTimeout(() => {
   const searchInput = document.getElementById("search-input");
   const searchButton = document.getElementById("search-btn");
