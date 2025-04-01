@@ -1,0 +1,117 @@
+:root {
+  --dark-cyan: #2a6562;
+  --light-cyan: #217873;
+  --orange: #b1761f;
+  --light-orange: #f5a42c;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+#main {
+  padding: 20px;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.about-header h1 {
+  font-size: 2.5rem;
+  color: #302b1c;
+  margin-top: 1.5em;
+  font-weight: bold;
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.feature {
+  background: #302b1c;
+  border: 1px solid var(--light-orange);
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--light-orange);
+}
+
+.feature p {
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Responsive font sizes */
+@media (max-width: 1200px) {
+  .about-header h1 {
+    font-size: 2.2rem;
+  }
+  .about-header p {
+    font-size: 1.1rem;
+  }
+  .feature h3 {
+    font-size: 1.4rem;
+  }
+  .feature p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-header h1 {
+    font-size: 2rem;
+  }
+  .about-header p {
+    font-size: 1rem;
+  }
+  .feature h3 {
+    font-size: 1.3rem;
+  }
+  .feature p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-header h1 {
+    font-size: 1.8rem;
+  }
+  .about-header p {
+    font-size: 0.9rem;
+  }
+  .feature h3 {
+    font-size: 1.2rem;
+  }
+  .feature p {
+    font-size: 0.85rem;
+  }
+}

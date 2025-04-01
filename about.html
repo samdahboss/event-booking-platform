@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+    <link rel="stylesheet" href="./styles/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./styles/about.css" />
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <script type="module">
+      import { getComponents } from "./scripts/utils.js";
+      getComponents();
+    </script>
+  </head>
+  <body>
+    <header id="header"></header>
+    <main id="main" style="padding-top: 5em">
+      <section class="about-header">
+        <h1>About Our Event Booking Platform</h1>
+        <p>
+          Welcome to our platform! We make event planning and booking seamless
+          and efficient.
+        </p>
+      </section>
+      <section class="features">
+        <div class="feature">
+          <i
+            class="fas fa-calendar-plus fa-3x"
+            style="color: var(--light-orange)"
+          ></i>
+          <h3>Easy Event Creation</h3>
+          <p>Create events effortlessly with our user-friendly interface.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-lock fa-3x" style="color: var(--light-orange)"></i>
+          <h3>Secure Bookings</h3>
+          <p>Book your spot with confidence using our secure payment system.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-clock fa-3x" style="color: var(--light-orange)"></i>
+          <h3>Real-Time Updates</h3>
+          <p>
+            Stay informed with real-time updates on event schedules and
+            availability.
+          </p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-cogs fa-3x" style="color: var(--light-orange)"></i>
+          <h3>Customizable Options</h3>
+          <p>
+            Tailor events to your needs with customizable settings and features.
+          </p>
+        </div>
+        <div class="feature">
+          <i
+            class="fas fa-headset fa-3x"
+            style="color: var(--light-orange)"
+          ></i>
+          <h3>24/7 Support</h3>
+          <p>Our support team is available around the clock to assist you.</p>
+        </div>
+      </section>
+    </main>
+    <footer id="footer"></footer>
+    <script src="./scripts/bootstrap.min.js"></script>
+  </body>
+</html>
