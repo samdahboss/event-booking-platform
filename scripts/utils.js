@@ -89,5 +89,5 @@ export const handleAuth = () => {
         window.location.href = "auth.html";
       };
     }
-  }, 1000);
+  }, 5000);
 };
