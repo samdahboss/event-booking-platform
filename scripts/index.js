@@ -1,7 +1,14 @@
-import { getComponents, hidePreloader, handleAuth } from "./utils.js"; // Importing the getComponents function
+import {
+  getComponents,
+  hidePreloader,
+  handleAuth,
+  addRegistrationFeature,
+} from "./utils.js"; // Importing the getComponents function
+
 hidePreloader(); // Call the function to hide the preloader
 getComponents(); // Call the function to get Navbar and Footer components
 handleAuth(); // Call the function to handle authentication
+
 
 // Function to get the carousel component and add it to the hero section of the page
 const getCarousel = async () => {
@@ -296,6 +303,8 @@ const renderEvents = async (events) => {
     );
     eventsContainer.appendChild(newEventCard.createEventCard());
   });
+
+  addRegistrationFeature(); // Call the function to add registration feature
 };
 
 populateEvents(); // Initial call to populate events on page load

@@ -91,3 +91,61 @@ export const handleAuth = () => {
     }
   }, 5000);
 };
+
+//Function to Add Registration Feature to Event Cards
+// This function adds a click event listener to each event card
+// When a card is clicked, it opens a modal with event details and a registration button
+// The modal allows users to register for the event
+
+export const addRegistrationFeature = async () => {
+  const modalContainer = document.getElementById("modal"); // Select the modal container element
+
+  // Fetch the modal HTML and add it to the modal container
+  try {
+    const modal = await fetch("./components/registration-modal.html");
+    const modalText = await modal.text();
+    modalContainer.innerHTML = modalText;
+
+    addRegistrationToCards(); // Call the function to add registration functionality to event cards
+  } catch (err) {
+    console.error("Error fetching modal:", err);
+  }
+};
+
+const addRegistrationToCards = () => {
+  const eventCards = document.querySelectorAll(".event-card"); // Select all event cards
+  eventCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const eventTitle = card.querySelector(".event-card-title").textContent;
+      const eventDescription =
+        card.querySelector(".card-description").textContent;
+      const eventDate = card.querySelector(".event-time").textContent;
+      const eventLocation = card.querySelector(".event-location").textContent;
+      const eventHost = card.querySelector(".event-organizer span").textContent;
+      const eventPrice =
+        card.querySelector(".event-price")?.textContent || "Free";
+
+      // Populate the modal with event details
+      document.getElementById("modalEventTitle").textContent = eventTitle;
+      document.getElementById("modalEventDescription").textContent =
+        eventDescription;
+      document.getElementById("modalEventDate").textContent = eventDate;
+      document.getElementById("modalEventLocation").textContent = eventLocation;
+      document.getElementById("modalEventHost").textContent = eventHost;
+      document.getElementById("modalEventPrice").textContent = eventPrice;
+
+      // Show the modal
+      const eventModal = new bootstrap.Modal(
+        document.getElementById("eventModal")
+      );
+      eventModal.show();
+    });
+  });
+
+  // Handle registration button click
+  const registerButton = document.getElementById("registerButton");
+  registerButton.addEventListener("click", () => {
+    alert("You have successfully registered for this event!");
+    // Add additional registration logic here
+  });
+};

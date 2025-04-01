@@ -5,6 +5,7 @@ import {
   hasQueryParam,
   hidePreloader,
   handleAuth,
+  addRegistrationFeature,
 } from "./utils.js"; // Import utility functions
 
 import { renderCards } from "./cards.js"; // Import the renderCards function
@@ -22,6 +23,8 @@ preloader.style.display = "none"; //hide preloader in development
 hidePreloader(); // Call the function to hide the preloader
 getComponents(); // Call the function to get Navbar and Footer components
 handleAuth(); // Call the function to handle authentication
+addRegistrationFeature(); // Call the function to add registration feature
+
 
 // Function to toggle mobile filter menu
 (() => {
