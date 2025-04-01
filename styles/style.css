@@ -177,6 +177,11 @@ div.card-body {
   font-weight: 500;
 }
 
+.modal.show{
+  display: flex !important;
+  align-items: center !important;
+}
+
 @media (max-width: 768px) {
   img.carousel-img {
     width: 150% !important; /* Zoom in to remove the orange parts */

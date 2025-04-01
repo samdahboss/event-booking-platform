@@ -98,7 +98,7 @@ export const handleAuth = () => {
 // The modal allows users to register for the event
 
 export const addRegistrationFeature = async () => {
-  const modalContainer = document.getElementById("modal"); // Select the modal container element
+  const modalContainer = document.getElementById("eventModal"); // Select the modal container element
 
   // Fetch the modal HTML and add it to the modal container
   try {
