@@ -112,27 +112,28 @@ export const addRegistrationFeature = async () => {
   }
 };
 
-const addRegistrationToCards = () => {
+const addRegistrationToCards = async () => {
   const eventCards = document.querySelectorAll(".event-card"); // Select all event cards
+  const allEvents = await fetchEvents(); // Fetch all events data
   eventCards.forEach((card) => {
     card.addEventListener("click", () => {
       const eventTitle = card.querySelector(".event-card-title").textContent;
-      const eventDescription =
-        card.querySelector(".card-description").textContent;
-      const eventDate = card.querySelector(".event-time").textContent;
-      const eventLocation = card.querySelector(".event-location").textContent;
-      const eventHost = card.querySelector(".event-organizer span").textContent;
-      const eventPrice =
-        card.querySelector(".event-price")?.textContent || "Free";
+      const currentEvent = allEvents.find(
+        (event) => event.title === eventTitle
+      ); // Find the clicked event in the events data
 
       // Populate the modal with event details
-      document.getElementById("modalEventTitle").textContent = eventTitle;
+      document.getElementById("modalEventTitle").textContent =
+        currentEvent.title;
       document.getElementById("modalEventDescription").textContent =
-        eventDescription;
-      document.getElementById("modalEventDate").textContent = eventDate;
-      document.getElementById("modalEventLocation").textContent = eventLocation;
-      document.getElementById("modalEventHost").textContent = eventHost;
-      document.getElementById("modalEventPrice").textContent = eventPrice;
+        currentEvent.description;
+      document.getElementById("modalEventImage").src = currentEvent.image;
+      document.getElementById("modalEventDate").textContent = currentEvent.date;
+      document.getElementById("modalEventLocation").textContent =
+        currentEvent.location;
+      document.getElementById("modalEventHost").textContent = currentEvent.host;
+      document.getElementById("modalEventPrice").textContent =
+        currentEvent.price;
 
       // Show the modal
       const eventModal = new bootstrap.Modal(

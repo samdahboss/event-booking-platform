@@ -9,7 +9,6 @@ hidePreloader(); // Call the function to hide the preloader
 getComponents(); // Call the function to get Navbar and Footer components
 handleAuth(); // Call the function to handle authentication
 
-
 // Function to get the carousel component and add it to the hero section of the page
 const getCarousel = async () => {
   const hero = document.getElementById("hero");

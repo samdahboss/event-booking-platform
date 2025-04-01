@@ -1,3 +1,5 @@
+import { addRegistrationFeature } from "./utils.js"; // Import utility function
+
 // class to create the search event card
 // This class is responsible for creating the event card elements
 export class SearchEventCard {
@@ -168,4 +170,6 @@ export const renderCards = async (events, query) => {
 
     searchResults.appendChild(newResult.createEventCard());
   });
+
+  addRegistrationFeature(); // Add registration feature to the cards
 };

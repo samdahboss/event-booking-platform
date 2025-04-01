@@ -1,5 +1,5 @@
 <!-- Event Details Modal -->
-<div class="modal-dialog pt-5 modal-lg z-index-1050">
+<div class="modal-dialog modal-lg">
   <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title" id="eventModalLabel">Event Details</h5>
@@ -12,6 +12,18 @@
     </div>
     <div class="modal-body">
       <!-- Event details will be dynamically populated here -->
+      <img
+        id="modalEventImage"
+        src=""
+        alt="Event Image"
+        class="img-fluid mb-3"
+        style="
+          max-height: 300px;
+          object-fit: cover;
+          width: 100%;
+          border-radius: 10px;
+        "
+      />
       <h3 id="modalEventTitle"></h3>
       <p id="modalEventDescription"></p>
       <p><strong>Date:</strong> <span id="modalEventDate"></span></p>
@@ -23,7 +35,12 @@
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
         Close
       </button>
-      <button id="registerButton" type="button" class="btn btn-primary">
+      <button
+        id="registerButton"
+        type="button"
+        class="btn"
+        style="background-color: #f5a42c; color: #fff"
+      >
         Register
       </button>
     </div>
