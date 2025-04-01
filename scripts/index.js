@@ -1,49 +1,19 @@
-// Function to hide the preloader after 5seconds
-setTimeout(() => {
-  const preloader = document.getElementById("preloader");
-  preloader.style.display = "none"; // Hide the preloader
-}, 5000);
+import { getComponents, hidePreloader } from "./utils.js"; // Importing the getComponents function
+hidePreloader(); // Call the function to hide the preloader
+getComponents(); // Call the function to get Navbar and Footer components
 
-function addComponents() {
-  //Function to get Navbar and add it to Page
-  const getNavBar = async () => {
-    const header = document.getElementById("header");
-    try {
-      const navbar = await fetch("./components/navbar.html");
-      const navbarText = await navbar.text();
-      header.innerHTML = navbarText;
-    } catch (err) {
-      console.error("Error fetching navbar:", err);
-    }
-  };
-  getNavBar();
-
-  // Function to get the carousel and add it to the page
-  const getCarousel = async () => {
-    const hero = document.getElementById("hero");
-    try {
-      const carousel = await fetch("./components/carousel.html");
-      const carouselText = await carousel.text();
-      hero.innerHTML = carouselText;
-    } catch (err) {
-      console.error("Error fetching navbar:", err);
-    }
-  };
-  getCarousel();
-
-  const getFooter = async () => {
-    const footer = document.getElementById("footer");
-    try {
-      const footerMarkup = await fetch("./components/footer.html");
-      const footerMarkupText = await footerMarkup.text();
-      footer.innerHTML = footerMarkupText;
-    } catch (err) {
-      console.error("Error fetching navbar:", err);
-    }
-  };
-  getFooter();
-}
-addComponents(); // Call the function to add components
+// Function to get the carousel and add it to the page
+const getCarousel = async () => {
+  const hero = document.getElementById("hero");
+  try {
+    const carousel = await fetch("./components/carousel.html");
+    const carouselText = await carousel.text();
+    hero.innerHTML = carouselText;
+  } catch (err) {
+    console.error("Error fetching navbar:", err);
+  }
+};
+getCarousel();
 
 // Function to get the categories and populate the category section
 class Category {
