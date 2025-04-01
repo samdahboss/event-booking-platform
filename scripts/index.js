@@ -2,8 +2,9 @@ import {
   getComponents,
   hidePreloader,
   handleAuth,
-  addRegistrationFeature,
 } from "./utils.js"; // Importing the getComponents function
+
+import { addRegistrationFeature } from "./registration.js";
 
 hidePreloader(); // Call the function to hide the preloader
 getComponents(); // Call the function to get Navbar and Footer components

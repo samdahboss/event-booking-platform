@@ -26,10 +26,46 @@
       />
       <h3 id="modalEventTitle"></h3>
       <p id="modalEventDescription"></p>
-      <p><strong>Date:</strong> <span id="modalEventDate"></span></p>
-      <p><strong>Location:</strong> <span id="modalEventLocation"></span></p>
-      <p><strong>Host:</strong> <span id="modalEventHost"></span></p>
-      <p><strong>Price:</strong> <span id="modalEventPrice"></span></p>
+      <form id="registrationForm" novalidate>
+        <div class="mb-3">
+          <label for="userName" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="userName"
+            placeholder="Enter your name"
+            required
+          />
+          <div class="invalid-feedback">Name is required.</div>
+        </div>
+        <div class="mb-3">
+          <label for="userEmail" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="userEmail"
+            placeholder="Enter your email"
+            required
+          />
+          <div class="invalid-feedback">
+            Please enter a valid email address.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="userSeats" class="form-label">Number of Seats</label>
+          <input
+            type="number"
+            class="form-control"
+            id="userSeats"
+            placeholder="Enter number of seats"
+            min="1"
+            required
+          />
+          <div class="invalid-feedback">
+            Please enter a valid number of seats.
+          </div>
+        </div>
+      </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

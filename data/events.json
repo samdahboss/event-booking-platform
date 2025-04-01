@@ -11,8 +11,8 @@
       "description": "An electrifying music event featuring top DJs and live performances. Get ready to dance the night away!",
       "category": "Music",
       "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7",
-      "seatsAvailable": 500,
-      "registeredPeople": 120
+      "totalSeatsAvailable": 500,
+      "seatsBooked": 500
     },
     {
       "title": "We The Tribals",
@@ -25,8 +25,8 @@
       "description": "A community gathering celebrating tribal culture with music, dance, and art.",
       "category": "Community",
       "image": "https://images.unsplash.com/photo-1515658323406-25d61c141a6e",
-      "seatsAvailable": 300,
-      "registeredPeople": 150
+      "totalSeatsAvailable": 300,
+      "seatsBooked": 150
     },
     {
       "title": "Join Us For Humanity",
@@ -39,8 +39,8 @@
       "description": "A charity event aimed at raising funds for humanitarian causes. Join us to make a difference.",
       "category": "Community",
       "image": "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b",
-      "seatsAvailable": 200,
-      "registeredPeople": 80
+      "totalSeatsAvailable": 200,
+      "seatsBooked": 80
     },
     {
       "title": "Save Earth",
@@ -53,8 +53,8 @@
       "description": "An environmental awareness event focusing on sustainability and conservation efforts.",
       "category": "Politics",
       "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09",
-      "seatsAvailable": 400,
-      "registeredPeople": 200
+      "totalSeatsAvailable": 400,
+      "seatsBooked": 200
     },
     {
       "title": "Linkin Park Celebration",
@@ -67,8 +67,8 @@
       "description": "A tribute concert celebrating the legacy of Linkin Park with live performances of their greatest hits.",
       "category": "Music",
       "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819",
-      "seatsAvailable": 600,
-      "registeredPeople": 300
+      "totalSeatsAvailable": 600,
+      "seatsBooked": 300
     },
     {
       "title": "Together Stronger!",
@@ -81,8 +81,8 @@
       "description": "A community event promoting unity and collaboration among diverse groups.",
       "category": "Community",
       "image": "https://images.unsplash.com/photo-1522543558187-768b6df7c25c",
-      "seatsAvailable": 350,
-      "registeredPeople": 180
+      "totalSeatsAvailable": 350,
+      "seatsBooked": 180
     },
     {
       "title": "We celebrate the...",
@@ -95,8 +95,8 @@
       "description": "A celebration of achievements and milestones with music and entertainment.",
       "category": "Community",
       "image": "https://images.unsplash.com/photo-1624006229221-2abd931f266b",
-      "seatsAvailable": 250,
-      "registeredPeople": 100
+      "totalSeatsAvailable": 250,
+      "seatsBooked": 100
     },
     {
       "title": "Food Life",
@@ -109,8 +109,8 @@
       "description": "A culinary event showcasing gourmet dishes and cooking demonstrations.",
       "category": "Food & Drink",
       "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "seatsAvailable": 300,
-      "registeredPeople": 150
+      "totalSeatsAvailable": 300,
+      "seatsBooked": 150
     },
     {
       "title": "Mr. Tagore’s Kitchen",
@@ -123,8 +123,8 @@
       "description": "An exclusive dining experience with a renowned chef presenting signature dishes.",
       "category": "Food & Drink",
       "image": "https://plus.unsplash.com/premium_photo-1663099970872-e1bdc46b7660?q=80&w=2143&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "seatsAvailable": 200,
-      "registeredPeople": 100
+      "totalSeatsAvailable": 200,
+      "seatsBooked": 100
     },
     {
       "title": "Music Party w/ Special Guests",
@@ -137,8 +137,8 @@
       "description": "A music extravaganza featuring special guest artists and live performances.",
       "category": "Music",
       "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "seatsAvailable": 500,
-      "registeredPeople": 250
+      "totalSeatsAvailable": 500,
+      "seatsBooked": 250
     },
     {
       "title": "Musketeers are Live!",
@@ -151,8 +151,8 @@
       "description": "A visual arts event showcasing the works of talented artists.",
       "category": "Visual Arts",
       "image": "https://images.unsplash.com/photo-1565103420311-8cbbc3cd87b8?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "seatsAvailable": 300,
-      "registeredPeople": 150
+      "totalSeatsAvailable": 300,
+      "seatsBooked": 150
     },
     {
       "title": "Dance with me",
@@ -165,8 +165,8 @@
       "description": "A dance event featuring performances and workshops for enthusiasts.",
       "category": "Visual Arts",
       "image": "https://images.unsplash.com/photo-1537365587684-f490102e1225?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "seatsAvailable": 400,
-      "registeredPeople": 200
+      "totalSeatsAvailable": 400,
+      "seatsBooked": 200
     },
     {
       "title": "Join Me: Birthday Celebration",
@@ -179,8 +179,8 @@
       "description": "A joyful birthday celebration with music, food, and entertainment.",
       "category": "Community",
       "image": "https://images.unsplash.com/photo-1623244727304-54995b233b1c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "seatsAvailable": 150,
-      "registeredPeople": 75
+      "totalSeatsAvailable": 150,
+      "seatsBooked": 75
     },
     {
       "title": "Freedom March: Justice for All",
@@ -193,8 +193,8 @@
       "description": "A political march advocating for justice and equality for all.",
       "category": "Politics",
       "image": "https://images.unsplash.com/photo-1597711662967-b5dac822f5ac?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "seatsAvailable": 500,
-      "registeredPeople": 250
+      "totalSeatsAvailable": 500,
+      "seatsBooked": 250
     },
     {
       "title": "Stop Wars Petition",
@@ -207,8 +207,8 @@
       "description": "A petition event aimed at promoting peace and ending wars.",
       "category": "Politics",
       "image": "https://images.unsplash.com/photo-1650984672581-8f305d4805ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "seatsAvailable": 300,
-      "registeredPeople": 150
+      "totalSeatsAvailable": 300,
+      "seatsBooked": 150
     },
     {
       "title": "The Weeknd: Starboy Tour",
@@ -221,8 +221,8 @@
       "description": "A live concert by The Weeknd featuring songs from the Starboy album.",
       "category": "Music",
       "image": "https://images.unsplash.com/photo-1552267094-b4c3771bd5e4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "seatsAvailable": 700,
-      "registeredPeople": 350
+      "totalSeatsAvailable": 700,
+      "seatsBooked": 350
     }
   ]
 }

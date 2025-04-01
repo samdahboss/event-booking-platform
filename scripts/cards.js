@@ -1,4 +1,4 @@
-import { addRegistrationFeature } from "./utils.js"; // Import utility function
+import { addRegistrationFeature } from "./registration.js"; // Import utility function
 
 // class to create the search event card
 // This class is responsible for creating the event card elements
