@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Analytics Dashboard</title>
+    <link rel="stylesheet" href="styles/analytics.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./styles/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+  </head>
+  <body>
+    <header id="header"></header>
+    <main id="main" style="padding: 5em;">
+      <div class="dashboard">
+        <div class="statistics">
+          <div class="stat-item">
+            <h3 id="total-events">0</h3>
+            <p>Total Events</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="total-attendees">0</h3>
+            <p>Total Attendees</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="average-attendees">0</h3>
+            <p>Average Attendees</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="total-seats-available">0</h3>
+            <p>Total Seats Available</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="total-seats-booked">0</h3>
+            <p>Total Seats Booked</p>
+          </div>
+          <div class="stat-item">
+            <h3 id="booking-percentage">0%</h3>
+            <p>Booking Percentage</p>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="eventChart"></canvas>
+        </div>
+      </div>
+    </main>
+    <footer id="footer"></footer>
+
+    <script src="scripts/analytics.js" type="module"></script>
+  </body>
+</html>
