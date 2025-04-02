@@ -310,6 +310,7 @@ const renderEvents = async (events) => {
 populateEvents(); // Initial call to populate events on page load
 handleFilterButtons(); // Call the function to handle filter buttons
 
+// Function to handle the search functionality
 setTimeout(() => {
   const searchButton = document.getElementById("search-btn");
   const searchInput = document.getElementById("search-input");
