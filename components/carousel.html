@@ -1,65 +1,82 @@
 <div id="carouselExampleIndicators" class="carousel slide h-100">
-    <div class="carousel-indicators">
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="0"
-        class="active"
-        aria-current="true"
-        aria-label="Slide 1"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="1"
-        aria-label="Slide 2"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide-to="2"
-        aria-label="Slide 3"
-      ></button>
-    </div>
-    <div class="carousel-inner h-100">
-      <div class="carousel-item h-100 active">
-        <img
-          src="./assets/carousel.png"
-          class="d-block w-100 carousel-img"
-          alt="..."
-        />
-      </div>
-      <div class="carousel-item h-100">
-        <img
-          src="./assets/carousel.png"
-          class="d-block w-100 carousel-img"
-          alt="..."
-        />
-      </div>
-      <div class="carousel-item h-100">
-        <img
-          src="./assets/carousel.png"
-          class="d-block w-100 carousel-img"
-          alt="..."
-        />
-      </div>
-    </div>
+  <div class="carousel-indicators">
     <button
-      class="carousel-control-prev"
       type="button"
       data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
+      data-bs-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
     <button
-      class="carousel-control-next"
       type="button"
       data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+      data-bs-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
   </div>
+  <div class="carousel-inner h-100">
+    <div class="carousel-item h-100 active">
+      <img
+        src="./assets/carousel.png"
+        class="d-block w-100 carousel-img"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item h-100">
+      <img
+        src="./assets/carousel.png"
+        class="d-block w-100 carousel-img"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item h-100">
+      <img
+        src="./assets/carousel.png"
+        class="d-block w-100 carousel-img"
+        alt="..."
+      />
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleIndicators"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleIndicators"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  <div
+    class="position-absolute w-100 h-100 top-0 hero-overlay d-flex justify-content-center align-items-center"
+  >
+    <div class="hero-text text-center text-white">
+      <h1 class="hero-title">Find Your Next Event</h1>
+      <p class="hero-description">
+        Discover the best events happening around you. Join us and make
+        unforgettable memories.
+      </p>
+      <a href="./search.html">
+        <button class="btn search-events-btn" id="search-events-btn">
+          Search Events
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </a>
+    </div>
+  </div>
+</div>

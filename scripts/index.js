@@ -2,6 +2,7 @@ import {
   getComponents,
   hidePreloader,
   handleAuth,
+  fetchEvents,
 } from "./utils.js"; // Importing the getComponents function
 
 import { addRegistrationFeature } from "./registration.js";
@@ -77,29 +78,14 @@ const handleFilterButtons = () => {
       button.classList.add("active");
 
       filterValue = button.textContent;
-      populateEvents(); // Call the function to filter events
+      populateEvents(); // Call the function to filter events and add them to the page
     });
   });
 };
 
-// Function to fetch events data
-const fetchEvents = async () => {
-  try {
-    const response = await fetch("../data/events.json");
-    if (!response.ok) {
-      throw new Error("Failed to fetch events data");
-    }
-    const result = await response.json();
-    return result.events;
-  } catch (error) {
-    console.error("Error fetching events:", error);
-    return []; // Return an empty array on error
-  }
-};
-
 const filterEvents = (events) => {
   if (filterValue === "All") {
-    return events;
+    return events.slice(0, 8);
   }
   return events.filter((event) => event.category === filterValue);
 };
