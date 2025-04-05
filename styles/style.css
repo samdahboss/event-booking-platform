@@ -182,6 +182,11 @@ div.card-body {
   align-items: center !important;
 }
 
+@media (min-width: 992px){
+  #hero{
+    height: 100vh;
+  }
+}
 @media (max-width: 768px) {
   img.carousel-img {
     width: 150% !important; /* Zoom in to remove the orange parts */
