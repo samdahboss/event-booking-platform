@@ -137,33 +137,50 @@ const handleFormValidation = (currentEvent, allEvents) => {
   });
 };
 
-const saveRegistrationInfo = (eventTitle, userName, userEmail, userSeats) => {
-  // Get the existing registrations from local storage
-  const registrations = JSON.parse(localStorage.getItem("registrations")) || {};
+const saveRegistrationInfo = async (
+  eventTitle,
+  userName,
+  userEmail,
+  userSeats
+) => {
+  const events = await fetchEvents(); // Fetch events from local storage
+  const eventIndex = events.findIndex((event) => event.title === eventTitle);
 
-  // Check if the event already has a registration array
-  if (!registrations[eventTitle]) {
-    registrations[eventTitle] = []; // Initialize an empty array for the event
-  }
+  if (eventIndex !== -1) {
+    const currentEvent = events[eventIndex];
 
-  // Check if the email already exists in the event's registration array
-  const existingRegistration = registrations[eventTitle].find(
-    (registration) => registration.email === userEmail
-  );
+    // Make sure registeredUsers is an array
+    if (!Array.isArray(currentEvent.registeredUsers)) {
+      currentEvent.registeredUsers = [];
+    }
 
-  if (existingRegistration) {
-    // If the email exists, update the number of seats
-    existingRegistration.seats += userSeats;
+    const existingRegistration = currentEvent.registeredUsers.find(
+      (registration) => registration.email === userEmail
+    );
+
+    if (existingRegistration) {
+      existingRegistration.seats += userSeats;
+    } else {
+      currentEvent.registeredUsers.push({
+        name: userName,
+        email: userEmail,
+        seats: userSeats,
+        timestamp: new Date().toISOString(),
+      });
+    }
+
+    // Update seatsBooked
+    currentEvent.seatsBooked += userSeats;
+
+    // Save updated event
+    events[eventIndex] = currentEvent;
+    localStorage.setItem("events", JSON.stringify(events));
+
+    console.log(
+      JSON.parse(localStorage.getItem("events"))[eventIndex].registeredUsers,
+      "After"
+    );
   } else {
-    // If the email does not exist, add a new registration
-    registrations[eventTitle].push({
-      name: userName,
-      email: userEmail,
-      seats: userSeats,
-      timestamp: new Date().toISOString(), // Add a timestamp for analytics
-    });
+    console.error("Event not found in local storage.");
   }
-
-  // Save the updated registrations back to local storage
-  localStorage.setItem("registrations", JSON.stringify(registrations));
 };

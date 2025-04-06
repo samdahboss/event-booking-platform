@@ -48,9 +48,19 @@ function signUp() {
     organizers.push(organizer);
     localStorage.setItem("organizers", JSON.stringify(organizers));
   };
+  const generateId = () => {
+    return "org-" + (organizers.length + 1); // Simple ID generation logic
+  };
 
+  const newOrganizerId = generateId(); // Generate the ID once
+  console.log("Generated Organizer ID:", newOrganizerId); // Debugging log
+  localStorage.setItem("loggedInOrganizerId", JSON.stringify(newOrganizerId)); // Store the current organizer in local storage
+  console.log(
+    "Stored loggedInOrganizerId in localStorage:",
+    localStorage.getItem("loggedInOrganizerId")
+  ); // Debugging log to verify storage
   setOrganizers({
-    id: "org" + (organizers.length + 1), // Generate a unique ID for the organizer 
+    id: newOrganizerId, // Use the same ID for the organizer
     email,
     password,
     name,

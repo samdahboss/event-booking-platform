@@ -44,6 +44,11 @@ export function hidePreloader() {
 // Function to fetch events data from json file and store it in local storage if it's not already there
 export const fetchEvents = async () => {
   try {
+    if (localStorage.getItem("events")) {
+      return JSON.parse(localStorage.getItem("events")); // Return events from local storage if available
+    }
+
+    // Fetch events data from the JSON file
     const response = await fetch("../data/events.json");
     if (!response.ok) {
       throw new Error("Failed to fetch events data");
@@ -73,7 +78,7 @@ export const getQueryParam = (param) => {
 // Function to handle authentication button in the navbar
 // This function checks if the user is signed in or not and updates the button accordingly
 export const handleAuth = () => {
-  const isSignedIn = localStorage.getItem("currentUser") ? true : false;
+  const isSignedIn = localStorage.getItem("loggedInOrganizerId") ? true : false;
   setTimeout(() => {
     const navAuthBtn = document.getElementById("nav-auth-btn");
 
@@ -86,8 +91,9 @@ export const handleAuth = () => {
     } else {
       navAuthBtn.innerHTML = `<i class="fas fa-bolt"></i>Become A Host`;
       navAuthBtn.onclick = function () {
-        window.location.href = "auth.html";
+        window.location.href = "/auth.html";
+        localStorage.removeItem("loggedInOrganizerId");
       };
     }
-  }, 5000);
+  }, 2000);
 };

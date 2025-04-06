@@ -24,6 +24,14 @@ const getCarousel = async () => {
 };
 getCarousel();
 
+// const setOrganizers = async () => {
+//   const response = await fetch("../data/organizers.json");
+//   const result = await response.json();
+  
+//   localStorage.setItem("organizers", JSON.stringify(result)); // Store organizers in local storage
+// }
+// setOrganizers(); // Call the function to set dummy organizers in local storage
+
 // Function to get the categories and populate the category section
 class Category {
   constructor(description, imageUrl) {
@@ -282,7 +290,7 @@ const renderEvents = async (events) => {
       event.image,
       event.date,
       event.location,
-      event.host,
+      event.organizerName,
       event.followers,
       event.attendees,
       event.description
