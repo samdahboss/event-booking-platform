@@ -1,0 +1,144 @@
+[
+    {
+        "id": "org-1",
+        "name": "Annette Black",
+        "email": "annette.black@example.com",
+        "password": "password123",
+        "events": [
+            {
+                "id": "event-1",
+                "name": "Let you go insane",
+                "date": "2025-03-31T22:00:00",
+                "registeredUsers": []
+            },
+            {
+                "id": "event-6",
+                "name": "Together Stronger!",
+                "date": "2023-12-15T12:00:00",
+                "registeredUsers": []
+            },
+            {
+                "id": "event-11",
+                "name": "Musketeers are Live!",
+                "date": "2025-02-27T18:00:00",
+                "registeredUsers": []
+            },
+            {
+                "id": "event-16",
+                "name": "The Weeknd: Starboy Tour",
+                "date": "2025-02-27T18:00:00",
+                "registeredUsers": []
+            }
+        ]
+    },
+    {
+        "id": "org-2",
+        "name": "Arlene McCoy",
+        "email": "arlene.mccoy@example.com",
+        "password": "password123",
+        "events": [
+            {
+                "id": "event-2",
+                "name": "We The Tribals",
+                "date": "2025-04-01T19:00:00",
+                "registeredUsers": []
+            },
+            {
+                "id": "event-7",
+                "name": "We celebrate the...",
+                "date": "2025-02-14T23:00:00",
+                "registeredUsers": []
+            },
+            {
+                "id": "event-12",
+                "name": "Dance with me",
+                "date": "2025-02-27T18:00:00",
+                "registeredUsers": []
+            },
+            {
+                "id": "event-14",
+                "name": "Freedom March: Justice for All",
+                "date": "2024-01-25T19:00:00",
+                "registeredUsers": []
+            }
+        ]
+    },
+    {
+        "id": "org-3",
+        "name": "Marvin McKinney",
+        "email": "marvin.mckinney@example.com",
+        "password": "password123",
+        "events": [
+            {
+                "id": "event-3",
+                "name": "Join Us For Humanity",
+                "date": "2025-02-27T18:00:00",
+                "registeredUsers": []
+            },
+            {
+                "id": "event-8",
+                "name": "Food Life",
+                "date": "2025-02-27T18:00:00",
+                "registeredUsers": []
+            },
+            {
+                "id": "event-13",
+                "name": "Join Me: Birthday Celebration",
+                "date": "2024-01-22T22:00:00",
+                "registeredUsers": []
+            },
+            {
+                "id": "event-15",
+                "name": "Stop Wars Petition",
+                "date": "2025-02-27T18:00:00",
+                "registeredUsers": []
+            }
+        ]
+    },
+    {
+        "id": "org-4",
+        "name": "Jacob Jones",
+        "email": "jacob.jones@example.com",
+        "password": "password123",
+        "events": [
+            {
+                "id": "event-4",
+                "name": "Save Earth",
+                "date": "2025-02-27T18:00:00",
+                "registeredUsers": []
+            },
+            {
+                "id": "event-9",
+                "name": "Mr. Tagore’s Kitchen",
+                "date": "2025-02-14T23:00:00",
+                "registeredUsers": []
+            },
+            {
+                "id": "event-14",
+                "name": "Freedom March: Justice for All",
+                "date": "2024-01-25T19:00:00",
+                "registeredUsers": []
+            }
+        ]
+    },
+    {
+        "id": "org-5",
+        "name": "Jerome Bell",
+        "email": "jerome.bell@example.com",
+        "password": "password123",
+        "events": [
+            {
+                "id": "event-5",
+                "name": "Linkin Park Celebration",
+                "date": "2025-02-14T23:00:00",
+                "registeredUsers": []
+            },
+            {
+                "id": "event-10",
+                "name": "Music Party w/ Special Guests",
+                "date": "2024-01-25T19:00:00",
+                "registeredUsers": []
+            }
+        ]
+    }
+]

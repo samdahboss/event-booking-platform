@@ -80,11 +80,11 @@ export const handleAuth = () => {
     if (isSignedIn) {
       navAuthBtn.innerHTML = `<i class="fas fa-bolt"></i>Sign Out`;
       navAuthBtn.onclick = function () {
-        localStorage.removeItem("currentUser");
+        localStorage.removeItem("loggedInOrganizerId");
         window.location.reload();
       };
     } else {
-      navAuthBtn.innerHTML = `<i class="fas fa-bolt"></i>Sign In`;
+      navAuthBtn.innerHTML = `<i class="fas fa-bolt"></i>Become A Host`;
       navAuthBtn.onclick = function () {
         window.location.href = "auth.html";
       };

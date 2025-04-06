@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Organizer Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light">
+
+<div class="container mt-4">
+  <!-- Organizer Info -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h3 class="card-title">Welcome, <span id="organizerName">Organizer</span> 👋</h3>
+      <p>Email: <span id="organizerEmail"></span></p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <h5 class="card-title">Total Events</h5>
+          <p class="card-text" id="totalEvents">0</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-success">
+        <div class="card-body">
+          <h5 class="card-title">Total Registrations</h5>
+          <p class="card-text" id="totalUsers">0</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-warning">
+        <div class="card-body">
+          <h5 class="card-title">Top Event</h5>
+          <p class="card-text" id="topEvent">N/A</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Events Table -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Your Events</h4>
+    <button class="btn btn-success" onclick="addEvent()">+ Add Event</button>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Registered Users</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="eventsTable"></tbody>
+  </table>
+</div>
+
+<script>
+  const organizers = JSON.parse(localStorage.getItem('organizers')) || [];
+  const loggedInId = localStorage.getItem('loggedInOrganizerId');
+  const allEvents = JSON.parse(localStorage.getItem('events')) || [];
+  const currentOrganizer = organizers.find(o => o.id === loggedInId);
+
+  if (!currentOrganizer) {
+    alert("You're not logged in as an organizer!");
+    window.location.href = '/login.html';
+  }
+
+  document.getElementById("organizerName").innerText = currentOrganizer.name;
+  document.getElementById("organizerEmail").innerText = currentOrganizer.email;
+
+  function getMyEvents() {
+    return allEvents.filter(e => e.organizerId === currentOrganizer.id);
+  }
+
+  function renderDashboard() {
+    const table = document.getElementById("eventsTable");
+    table.innerHTML = "";
+
+    const events = getMyEvents();
+
+    // Stats
+    document.getElementById("totalEvents").innerText = events.length;
+    document.getElementById("totalUsers").innerText = events.reduce((a, b) => a + b.registeredUsers.length, 0);
+    document.getElementById("topEvent").innerText = events.sort((a, b) => b.registeredUsers.length - a.registeredUsers.length)[0]?.name || "N/A";
+
+    events.forEach(event => {
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td>${event.name}</td>
+        <td>${event.date}</td>
+        <td>${event.registeredUsers.length}</td>
+        <td>
+          <button class="btn btn-sm btn-info me-1" onclick="viewUsers('${event.id}')">Users</button>
+          <button class="btn btn-sm btn-warning me-1" onclick="editEvent('${event.id}')">Edit</button>
+          <button class="btn btn-sm btn-danger" onclick="deleteEvent('${event.id}')">Delete</button>
+        </td>
+      `;
+
+      table.appendChild(row);
+    });
+  }
+
+  function deleteEvent(eventId) {
+    let events = JSON.parse(localStorage.getItem("events")) || [];
+    events = events.filter(e => e.id !== eventId);
+    localStorage.setItem("events", JSON.stringify(events));
+
+    const orgIndex = organizers.findIndex(o => o.id === currentOrganizer.id);
+    if (orgIndex !== -1) {
+      organizers[orgIndex].events = organizers[orgIndex].events.filter(e => e.id !== eventId);
+      localStorage.setItem("organizers", JSON.stringify(organizers));
+    }
+
+    renderDashboard();
+  }
+
+  function viewUsers(eventId) {
+    const event = allEvents.find(e => e.id === eventId);
+    if (!event) return alert("Event not found");
+
+    const users = event.registeredUsers;
+    if (!users.length) return alert("No users registered yet.");
+
+    let msg = `Registered Users for "${event.name}":\n`;
+    users.forEach((u, i) => {
+      msg += `${i + 1}. ${u.name} (${u.email})\n`;
+    });
+    alert(msg);
+  }
+
+  function editEvent(eventId) {
+    // Placeholder - link to edit page or open a modal
+    alert("Edit functionality is not implemented yet.");
+  }
+
+  function addEvent() {
+    // Placeholder - link to event creation page or use prompt
+    const name = prompt("Enter Event Name:");
+    const date = prompt("Enter Event Date (YYYY-MM-DD):");
+
+    if (!name || !date) return;
+
+    const newEvent = {
+      id: Date.now().toString(),
+      name,
+      date,
+      registeredUsers: [],
+      organizerId: currentOrganizer.id,
+      organizerName: currentOrganizer.name
+    };
+
+    const events = JSON.parse(localStorage.getItem("events")) || [];
+    events.push(newEvent);
+    localStorage.setItem("events", JSON.stringify(events));
+
+    // Update organizer's own data too
+    currentOrganizer.events.push(newEvent);
+    const orgIndex = organizers.findIndex(o => o.id === currentOrganizer.id);
+    organizers[orgIndex] = currentOrganizer;
+    localStorage.setItem("organizers", JSON.stringify(organizers));
+
+    renderDashboard();
+  }
+
+  renderDashboard();
+</script>
+
+</body>
+</html>

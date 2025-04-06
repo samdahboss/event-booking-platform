@@ -1,10 +1,13 @@
 {
   "events": [
     {
+      "eventId": "event-1",
+      "organizerId": "org-1",
+      "organizerName": "Annette Black",
+      "registeredUsers": [],
       "title": "Let you go insane",
       "date": "Monday - 31st March 2025 - 22:00",
       "location": "1901 Thornridge Cir. Shiloh, Hawaii 81063",
-      "host": "Annette Black",
       "price": "$50",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -15,10 +18,13 @@
       "seatsBooked": 500
     },
     {
+      "eventId": "event-2",
+      "organizerId": "org-2",
+      "organizerName": "Arlene McCoy",
+      "registeredUsers": [],
       "title": "We The Tribals",
       "date": "Tuesday - 1st April 2025 - 19:00",
       "location": "4140 Parker Rd. Allentown, New Mexico 31134",
-      "host": "Arlene McCoy",
       "price": "$30",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -29,10 +35,13 @@
       "seatsBooked": 150
     },
     {
+      "eventId": "event-3",
+      "organizerId": "org-3",
+      "organizerName": "Marvin McKinney",
+      "registeredUsers": [],
       "title": "Join Us For Humanity",
       "date": "Tuesday - 27th February - 18:00",
       "location": "3891 Ranchview Dr. Richardson, California 62639",
-      "host": "Marvin McKinney",
       "price": "$20",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -43,10 +52,13 @@
       "seatsBooked": 80
     },
     {
+      "eventId": "event-4",
+      "organizerId": "org-4",
+      "organizerName": "Jacob Jones",
+      "registeredUsers": [],
       "title": "Save Earth",
       "date": "Tuesday - 27th February - 18:00",
       "location": "3571 W. Gray St. Utica, Pennsylvania 57867",
-      "host": "Jacob Jones",
       "price": "$15",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -57,10 +69,13 @@
       "seatsBooked": 200
     },
     {
+      "eventId": "event-5",
+      "organizerId": "org-5",
+      "organizerName": "Jerome Bell",
+      "registeredUsers": [],
       "title": "Linkin Park Celebration",
       "date": "Sunday - 14th February - 23:00",
       "location": "3571 W. Gray St. Utica, Pennsylvania 57867",
-      "host": "Jerome Bell",
       "price": "$60",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -71,10 +86,13 @@
       "seatsBooked": 300
     },
     {
+      "eventId": "event-6",
+      "organizerId": "org-1",
+      "organizerName": "Annette Black",
+      "registeredUsers": [],
       "title": "Together Stronger!",
       "date": "Friday - 15th December 2023 - 12:00",
       "location": "6397 Washington Ave. Manchester, Kentucky 39495",
-      "host": "Guy Hawkins",
       "price": "$25",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -85,10 +103,13 @@
       "seatsBooked": 180
     },
     {
+      "eventId": "event-7",
+      "organizerId": "org-2",
+      "organizerName": "Arlene McCoy",
+      "registeredUsers": [],
       "title": "We celebrate the...",
       "date": "Sunday - 14th February - 23:00",
       "location": "6397 Washington Ave. Manchester, Kentucky 39495",
-      "host": "Courtney Henry",
       "price": "$10",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -99,10 +120,13 @@
       "seatsBooked": 100
     },
     {
+      "eventId": "event-8",
+      "organizerId": "org-3",
+      "organizerName": "Marvin McKinney",
+      "registeredUsers": [],
       "title": "Food Life",
       "date": "Tuesday - 27th February - 18:00",
       "location": "8502 Preston Rd. Inglewood, Maine 98380",
-      "host": "Esther Howard",
       "price": "$40",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -113,10 +137,13 @@
       "seatsBooked": 150
     },
     {
+      "eventId": "event-9",
+      "organizerId": "org-4",
+      "organizerName": "Jacob Jones",
+      "registeredUsers": [],
       "title": "Mr. Tagore’s Kitchen",
       "date": "Sunday - 14th February - 23:00",
       "location": "8502 Preston Rd. Inglewood, Maine 98380",
-      "host": "Albert Flores",
       "price": "$50",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -127,10 +154,13 @@
       "seatsBooked": 100
     },
     {
+      "eventId": "event-10",
+      "organizerId": "org-5",
+      "organizerName": "Jerome Bell",
+      "registeredUsers": [],
       "title": "Music Party w/ Special Guests",
       "date": "Friday - 25th January 2024 - 19:00",
       "location": "3891 Ranchview Dr. Richardson, California 62639",
-      "host": "Jenny Wilson",
       "price": "$70",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -141,10 +171,13 @@
       "seatsBooked": 250
     },
     {
+      "eventId": "event-11",
+      "organizerId": "org-1",
+      "organizerName": "Annette Black",
+      "registeredUsers": [],
       "title": "Musketeers are Live!",
       "date": "Tuesday - 27th February - 18:00",
       "location": "6391 Elgin St. Celina, Delaware 10299",
-      "host": "Floyd Miles",
       "price": "$30",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -155,10 +188,13 @@
       "seatsBooked": 150
     },
     {
+      "eventId": "event-12",
+      "organizerId": "org-2",
+      "organizerName": "Arlene McCoy",
+      "registeredUsers": [],
       "title": "Dance with me",
       "date": "Tuesday - 27th February - 18:00",
       "location": "3891 Ranchview Dr. Richardson, California 62639",
-      "host": "Esther Howard",
       "price": "$25",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -169,10 +205,13 @@
       "seatsBooked": 200
     },
     {
+      "eventId": "event-13",
+      "organizerId": "org-3",
+      "organizerName": "Marvin McKinney",
+      "registeredUsers": [],
       "title": "Join Me: Birthday Celebration",
       "date": "Tuesday - 22nd January 2024 - 22:00",
       "location": "1901 Thornridge Cir. Shiloh, Hawaii 81063",
-      "host": "Annette Black",
       "price": "$0",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -183,10 +222,13 @@
       "seatsBooked": 75
     },
     {
+      "eventId": "event-14",
+      "organizerId": "org-4",
+      "organizerName": "Jacob Jones",
+      "registeredUsers": [],
       "title": "Freedom March: Justice for All",
       "date": "Friday - 25th January 2024 - 19:00",
       "location": "4140 Parker Rd. Allentown, New Mexico 31134",
-      "host": "Arlene McCoy",
       "price": "$20",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -197,10 +239,13 @@
       "seatsBooked": 250
     },
     {
+      "eventId": "event-15",
+      "organizerId": "org-5",
+      "organizerName": "Jerome Bell",
+      "registeredUsers": [],
       "title": "Stop Wars Petition",
       "date": "Tuesday - 27th February - 18:00",
       "location": "3891 Ranchview Dr. Richardson, California 62639",
-      "host": "Marvin McKinney",
       "price": "$15",
       "followers": "23.5k",
       "attendees": "1.2k",
@@ -211,10 +256,13 @@
       "seatsBooked": 150
     },
     {
+      "eventId": "event-16",
+      "organizerId": "org-1",
+      "organizerName": "Annette Black",
+      "registeredUsers": [],
       "title": "The Weeknd: Starboy Tour",
       "date": "Tuesday - 27th February - 18:00",
       "location": "3571 W. Gray St. Utica, Pennsylvania 57867",
-      "host": "Jacob Jones",
       "price": "$80",
       "followers": "23.5k",
       "attendees": "1.2k",

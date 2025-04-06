@@ -28,34 +28,38 @@ function signUp() {
   }
 
   // Check if the account already exists
-  const getUsers = () => {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    return users;
+  const getOrganizers = () => {
+    const organizers = JSON.parse(localStorage.getItem("organizers")) || [];
+    return organizers;
   };
 
-  const users = getUsers();
-  const isExistingUser = users.some((user) => user.email === email);
+  const organizers = getOrganizers();
+  const isExistingorganizer = organizers.some(
+    (organizer) => organizer.email === email
+  );
 
-  if (isExistingUser) {
+  if (isExistingorganizer) {
     alert("An account with this email already exists.");
     return;
   }
 
-  // Add the new user to local storage
-  const setUsers = (user) => {
-    users.push(user);
-    localStorage.setItem("users", JSON.stringify(users));
+  // Add the new organizer to local storage
+  const setOrganizers = (organizer) => {
+    organizers.push(organizer);
+    localStorage.setItem("organizers", JSON.stringify(organizers));
   };
 
-  setUsers({
+  setOrganizers({
+    id: "org" + (organizers.length + 1), // Generate a unique ID for the organizer 
     email,
     password,
     name,
+    events: [], // Initialize with an empty events array
   });
 
   alert("Sign-up successful!");
   // Simulate a successful sign-up
-  window.location.href = "/index.html";
+  window.location.href = "/dashboard.html";
 }
 
 const signUpButton = document.querySelector(".sign-up-btn");
@@ -81,26 +85,26 @@ function signIn() {
   }
 
   // Check if the account exists
-  const getUsers = () => {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    return users;
+  const getOrganizers = () => {
+    const organizers = JSON.parse(localStorage.getItem("organizers")) || [];
+    return organizers;
   };
 
-  const users = getUsers();
-  const user = users.find(
-    (user) => user.email === email && user.password === password
+  const organizers = getOrganizers();
+  const organizer = organizers.find(
+    (organizer) => organizer.email === email && organizer.password === password
   );
 
-  if (!user) {
+  if (!organizer) {
     alert("Invalid email or password.");
     return;
   }
 
-  localStorage.setItem("currentUser", JSON.stringify(user)); // Store the current user in local storage
+  localStorage.setItem("loggedInOrganizerId", JSON.stringify(organizer.id)); // Store the current organizer in local storage
 
   alert("Sign-in successful!");
   // Simulate a successful sign-in
-  window.location.href = "/index.html";
+  window.location.href = "/dashboard.html";
 }
 
 const signInButton = document.querySelector(".sign-in-btn");
