@@ -280,3 +280,34 @@ async function renderDashboard() {
   });
 }
 renderDashboard();
+
+// Select all nav-link elements
+const navLinks = document.querySelectorAll(".nav-link");
+
+// Add a click event listener to each nav-link
+navLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    // Get the clicked link
+    const clickedLink = event.target;
+
+    // Optionally, add an active class to the clicked link
+    navLinks.forEach((link) => link.classList.remove("active")); // Remove active class from all links
+    clickedLink.classList.add("active"); // Add active class to the clicked link
+    const currentView = clickedLink.innerHTML; // Log the clicked link to the console
+
+    const eventsTableLabel = document.getElementById("events-table-label");
+    const eventsTable = document.getElementById("events-table");
+    const analyticsChart = document.getElementById("analytics-chart");
+
+    if(currentView === "Analytics") {
+      eventsTableLabel.classList.add("d-none");
+      eventsTable.classList.add("d-none");
+      analyticsChart.classList.remove("d-none");
+    }
+    else if(currentView === "Home") {
+      eventsTableLabel.classList.remove("d-none");
+      eventsTable.classList.remove("d-none");
+      analyticsChart.classList.add("d-none");
+    }
+  });
+});

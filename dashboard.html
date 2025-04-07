@@ -101,14 +101,14 @@
           </div>
 
           <!-- Events Table -->
-          <div class="d-none justify-content-between align-items-center mb-3">
+          <div id="events-table-label" class="d-flex mt-4 justify-content-between align-items-center mb-3">
             <h4>Your Events</h4>
             <button class="btn btn-success" id="add-event-btn">
               + Add Event
             </button>
           </div>
 
-          <table class="d-none table table-bordered table-striped">
+          <table id="events-table" class="table table-bordered table-striped">
             <thead class="table-dark">
               <tr>
                 <th>Event Name</th>
@@ -129,7 +129,7 @@
         </div>
 
         <!--Analytics-->
-        <div class="container mt-4 w-">
+        <div id="analytics-chart" class="d-none container mt-4">
           <div class="chart-container">
             <canvas id="eventChart"></canvas>
           </div>
