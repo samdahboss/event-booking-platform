@@ -67,7 +67,7 @@ function signUp() {
     events: [], // Initialize with an empty events array
   });
 
-  alert("Sign-up successful!");
+  // alert("Sign-up successful!");
   // Simulate a successful sign-up
   window.location.href = "/dashboard.html";
 }
@@ -112,7 +112,7 @@ function signIn() {
 
   localStorage.setItem("loggedInOrganizerId", JSON.stringify(organizer.id)); // Store the current organizer in local storage
 
-  alert("Sign-in successful!");
+  // alert("Sign-in successful!");
   // Simulate a successful sign-in
   window.location.href = "/dashboard.html";
 }

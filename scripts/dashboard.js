@@ -26,6 +26,21 @@ storeInitialOranizers();
 const organizers = JSON.parse(localStorage.getItem("organizers")) || [];
 const loggedInId = JSON.parse(localStorage.getItem("loggedInOrganizerId"));
 
+//Get the logged-in organizer's data
+const currentOrganizer = organizers.find(
+  (organizer) => organizer.id === loggedInId
+);
+
+// Check if the organizer is logged in
+if (!currentOrganizer) {
+  //Redirect to login page
+  window.location.href = "/auth.html";
+} else {
+  // Display the organizer's name and email in the dashboard
+  document.getElementById("organizerName").innerText = currentOrganizer.name;
+  document.getElementById("organizerEmail").innerText = currentOrganizer.email;
+}
+
 // Fetching all events from localStorage
 let allEvents;
 const getAllEvents = async () => {
@@ -63,26 +78,11 @@ toggleSidebarBtns.forEach((btn) => {
   });
 });
 
-//Get the logged-in organizer's data
-const currentOrganizer = organizers.find(
-  (organizer) => organizer.id === loggedInId
-);
-
-// Check if the organizer is logged in
-if (!currentOrganizer) {
-  alert("You're not logged in as an organizer!");
-  window.location.href = "/index.html";
-}
-
 //Getting the logged-in organizer's Events
 async function getCurrentOrganizerEvent() {
   const events = await fetchEvents();
   return events.filter((e) => e.organizerId === currentOrganizer.id);
 }
-
-// Display the organizer's name and email in the dashboard
-document.getElementById("organizerName").innerText = currentOrganizer.name;
-document.getElementById("organizerEmail").innerText = currentOrganizer.email;
 
 //Add Event Feature for Organizers
 const showAddEventModal = document.getElementById("add-event-btn");
