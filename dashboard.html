@@ -15,24 +15,25 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./styles/dashboard.css" />
-    <link rel="stylesheet" href="./styles/navbar.css" />
-    <link rel="stylesheet" href="./styles/footer.css" />
+
     <link rel="stylesheet" href="./styles/sidebar.css" />
-    <script src="./scripts/dashboard.js" type="module"></script>
+    <link rel="stylesheet" href="./styles/dashboard.css" />
   </head>
   <body class="bg-light">
     <header id="header"></header>
     <main id="main" class="d-flex">
       <!-- Sidebar -->
       <nav id="sidebar" class="bg-ligh p-3">
-        <button id="nav-close-sidebar" class="toggle-sidebar align-items-center mr-auto gap-2">
+        <button
+          id="nav-close-sidebar"
+          class="toggle-sidebar align-items-center mr-auto gap-2"
+        >
           <i class="fas fa-close"></i>
         </button>
         <div class="bg-dark d-flex justify-content-center mb-4">
-        <a class="navbar-brand" href="#">
-          <img src="./assets/event-logo.png" alt="logo" class="nav-logo" />
-        </a>
+          <a class="navbar-brand" href="#">
+            <img src="./assets/event-logo.png" alt="logo" class="nav-logo" />
+          </a>
         </div>
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -48,10 +49,12 @@
       </nav>
 
       <!-- Main Content -->
-      <div id="main-content" class="flex-grow-1">
-        <div class="container mt-4">
+      <div id="main-content" class="w-100">
+        <div class="container mt-4 w-100">
           <!-- Organizer Info -->
-          <div class="organizer-info position-relative mb-4 d-flex justify-content-between align-items-center">
+          <div
+            class="organizer-info position-relative mb-4 d-flex justify-content-between align-items-center"
+          >
             <button id="organizer-toggle-sidebar" class="toggle-sidebar gap-2">
               <i class="fas fa-bars"></i>
             </button>
@@ -61,17 +64,17 @@
               </h3>
               <p>Email: <span id="organizerEmail"></span></p>
             </div>
-              <button
-                class="dashboard-auth-btn d-flex gap-1 ms-auto align-items-center justify-content-center"
-                id="nav-auth-btn"
-              >
-                <i class="fas fa-bolt"></i>Sign Out
-              </button>
+            <button
+              class="dashboard-auth-btn d-flex gap-1 ms-auto align-items-center justify-content-center"
+              id="nav-auth-btn"
+            >
+              <i class="fas fa-bolt"></i>Sign Out
+            </button>
           </div>
 
           <!-- Stats -->
-          <div class="row mb-4 stats-row">
-            <div class="col-md-4">
+          <div class="stats-row">
+            <div class="stats-card">
               <div class="card text-white stats-card">
                 <div class="card-body">
                   <h5 class="card-title">Total Events</h5>
@@ -79,7 +82,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="stats-card">
               <div class="card text-white stats-card">
                 <div class="card-body">
                   <h5 class="card-title">Total Registrations</h5>
@@ -87,7 +90,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="stats-card">
               <div class="card text-white stats-card">
                 <div class="card-body">
                   <h5 class="card-title">Top Event</h5>
@@ -98,14 +101,14 @@
           </div>
 
           <!-- Events Table -->
-          <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="d-none justify-content-between align-items-center mb-3">
             <h4>Your Events</h4>
             <button class="btn btn-success" id="add-event-btn">
               + Add Event
             </button>
           </div>
 
-          <table class="table table-bordered table-striped">
+          <table class="d-none table table-bordered table-striped">
             <thead class="table-dark">
               <tr>
                 <th>Event Name</th>
@@ -117,16 +120,25 @@
             <tbody id="eventsTable"></tbody>
           </table>
           <div
-          class="modal fade"
-          id="addEventModal"
-          tabindex="-1"
-          aria-labelledby="eventModalLabel"
-          aria-hidden="true"
-        ></div>
+            class="modal fade"
+            id="addEventModal"
+            tabindex="-1"
+            aria-labelledby="eventModalLabel"
+            aria-hidden="true"
+          ></div>
+        </div>
+
+        <!--Analytics-->
+        <div class="container mt-4 w-">
+          <div class="chart-container">
+            <canvas id="eventChart"></canvas>
+          </div>
         </div>
       </div>
     </main>
     <footer id="footer" class="mt-4"></footer>
     <script src="./scripts/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./scripts/dashboard.js" type="module"></script>
   </body>
 </html>

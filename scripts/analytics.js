@@ -1,45 +1,18 @@
-import { getComponents, handleAuth } from "./utils.js";
-getComponents();
-handleAuth();
+import { fetchEvents } from "./utils.js";
+// Fetching the logged-in organizer's data from localStorage
+const organizers = JSON.parse(localStorage.getItem("organizers")) || [];
+const loggedInId = JSON.parse(localStorage.getItem("loggedInOrganizerId"));
 
-// Initialize the search button and input field after a delay to ensure they are available in the DOM
-// This is important if the elements are dynamically loaded or if there are any rendering delays
-setTimeout(() => {
-  const searchButton = document.getElementById("search-btn");
-  const searchInput = document.getElementById("search-input");
+//Get the logged-in organizer's data
+const currentOrganizer = organizers.find(
+  (organizer) => organizer.id === loggedInId
+);
 
-  const searchForm = document.getElementById("search-form");
-
-  searchForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevent form submission
-
-    const query = searchInput.value.trim(); // Get the search query
-
-    // Redirect to the search page with the query as a URL parameter
-    window.location.href = `../search.html?query=${encodeURIComponent(query)}`;
-  });
-
-  searchButton.addEventListener("click", async () => {
-    const query = searchInput.value.trim(); // Get the search query
-
-    // Redirect to the search page with the query as a URL parameter
-    window.location.href = `../search.html?query=${encodeURIComponent(query)}`;
-
-    searchInput.value = ""; // Clear the search input field
-  });
-}, 1000); // Delay the event listener attachment by 1 seconds
-
-// Fetch registration data from local storage
-const getRegistrationData = () => {
-  const data = JSON.parse(localStorage.getItem("registrations"));
-  return data || {};
-};
-
-// Fetch event data from local storage
-const getEventData = () => {
-  const data = JSON.parse(localStorage.getItem("events"));
-  return data || [];
-};
+//Getting the logged-in organizer's Events
+async function getCurrentOrganizerEvent() {
+  const events = await fetchEvents();
+  return events.filter((e) => e.organizerId === currentOrganizer.id);
+}
 
 // Process registration data to calculate attendees per event
 const processRegistrationData = (registrationData) => {
@@ -50,50 +23,6 @@ const processRegistrationData = (registrationData) => {
   }
   return processedData;
 };
-
-// Calculate basic statistics
-function calculateStatistics(data) {
-  const totalEvents = data.length;
-  const totalAttendees = data.reduce((sum, event) => sum + event.attendees, 0);
-  const averageAttendees =
-    totalEvents > 0 ? (totalAttendees / totalEvents).toFixed(2) : 0;
-  return { totalEvents, totalAttendees, averageAttendees };
-}
-
-// Calculate additional statistics
-function calculateAdditionalStatistics(eventData) {
-  const totalSeatsAvailable = eventData.reduce(
-    (sum, event) => sum + event.totalSeatsAvailable,
-    0
-  );
-  const totalSeatsBooked = eventData.reduce(
-    (sum, event) => sum + event.seatsBooked,
-    0
-  );
-  const bookingPercentage =
-    totalSeatsAvailable > 0
-      ? ((totalSeatsBooked / totalSeatsAvailable) * 100).toFixed(2)
-      : 0;
-  return { totalSeatsAvailable, totalSeatsBooked, bookingPercentage };
-}
-
-// Render statistics in the dashboard
-function renderStatistics(stats) {
-  document.getElementById("total-events").textContent = stats.totalEvents;
-  document.getElementById("total-attendees").textContent = stats.totalAttendees;
-  document.getElementById("average-attendees").textContent =
-    stats.averageAttendees;
-}
-
-// Render additional statistics in the dashboard
-function renderAdditionalStatistics(stats) {
-  document.getElementById("total-seats-available").textContent =
-    stats.totalSeatsAvailable;
-  document.getElementById("total-seats-booked").textContent =
-    stats.totalSeatsBooked;
-  document.getElementById("booking-percentage").textContent =
-    `${stats.bookingPercentage}%`;
-}
 
 // Render charts using Chart.js
 function renderCharts(data) {
@@ -123,19 +52,26 @@ function renderCharts(data) {
   });
 }
 
-// Initialize dashboard
-function initDashboard() {
-  const registrationData = getRegistrationData();
-  const processedData = processRegistrationData(registrationData);
-  const stats = calculateStatistics(processedData);
-  renderStatistics(stats);
+// Initialize Charts
+// This function fetches the logged-in organizer's events, processes the registration data, and renders the charts
+// It is called when the page loads to display the charts on the dashboard
+export async function initCharts() {
+  try {
+    // Fetch the logged-in organizer's events
+    const organizerEvents = await getCurrentOrganizerEvent();
 
-  const eventData = getEventData();
-  const additionalStats = calculateAdditionalStatistics(eventData);
-  renderAdditionalStatistics(additionalStats);
+    // Process the registration data for the organizer's events
+    const registrationData = {};
+    organizerEvents.forEach((event) => {
+      registrationData[event.title] = event.registeredUsers || [];
+    });
 
-  renderCharts(processedData);
+    // Process the registration data to calculate attendees per event
+    const processedData = processRegistrationData(registrationData);
+
+    // Render the chart with the processed data
+    renderCharts(processedData);
+  } catch (error) {
+    console.error("Error initializing dashboard:", error);
+  }
 }
-
-// Run initialization on page load
-document.addEventListener("DOMContentLoaded", initDashboard);

@@ -1,6 +1,11 @@
 import { fetchEvents, handleAuth } from "./utils.js";
 handleAuth();
 
+import { initCharts } from "./analytics.js";
+
+// Run initialization on page load
+document.addEventListener("DOMContentLoaded", initCharts);
+
 // Fetching the logged-in organizer's data from localStorage
 const organizers = JSON.parse(localStorage.getItem("organizers")) || [];
 const loggedInId = JSON.parse(localStorage.getItem("loggedInOrganizerId"));
@@ -76,6 +81,20 @@ showAddEventModal.addEventListener("click", () => {
   addEventBtn.addEventListener("click", () => addEvent());
 });
 const addEvent = () => {
+  //Function to set form inputs to previous event data
+  const setFormInputs = () => {
+    document.getElementById("eventTitle").value = "";
+    document.getElementById("eventDescription").value = "";
+    document.getElementById("eventDate").value = "";
+    document.getElementById("eventLocation").value = "";
+    document.getElementById("eventPrice").value = "";
+    document.getElementById("eventCategory").value = "";
+    document.getElementById("eventImage").value = "";
+
+    document.getElementById("totalSeats").value = "";
+  };
+  setFormInputs();
+
   const formData = {
     title: document.getElementById("eventTitle").value.trim(),
     description: document.getElementById("eventDescription").value.trim(),
@@ -87,6 +106,7 @@ const addEvent = () => {
     totalSeats: document.getElementById("totalSeats").value.trim(),
   };
 
+  
   const generateId = () => {
     let newId;
     do {
@@ -94,7 +114,7 @@ const addEvent = () => {
     } while (allEvents.some((event) => event.eventId === newId)); // Check if the ID already exists
     return newId;
   };
-  
+
   const newEvent = {
     eventId: generateId(),
     organizerId: currentOrganizer.id,
@@ -218,7 +238,7 @@ async function editEvent(eventId) {
     localStorage.setItem("organizers", JSON.stringify(organizers));
 
     renderDashboard();
-    eventModal.hide()
+    eventModal.hide();
   };
 }
 
