@@ -1,4 +1,4 @@
-import { storeInitialOrganizers } from "./utils";
+import { storeInitialOrganizers } from "./utils.js";
 storeInitialOrganizers();// Function to fetch organizers data from json file and store it in local storage if it's not already there
 
 function toggleForm() {
