@@ -11,7 +11,8 @@ function toggleForm() {
       ? "flex"
       : "none";
 }
-toggleForm(); // Initialize the form state
+// toggleForm(); // Initialize the form state
+window.toggleForm = toggleForm;
 
 // Function to handle sign-in
 function signUp() {
