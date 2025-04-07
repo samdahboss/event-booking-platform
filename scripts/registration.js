@@ -175,11 +175,6 @@ const saveRegistrationInfo = async (
     // Save updated event
     events[eventIndex] = currentEvent;
     localStorage.setItem("events", JSON.stringify(events));
-
-    console.log(
-      JSON.parse(localStorage.getItem("events"))[eventIndex].registeredUsers,
-      "After"
-    );
   } else {
     console.error("Event not found in local storage.");
   }

@@ -1,4 +1,4 @@
-import { fetchEvents, handleAuth} from "./utils.js";
+import { fetchEvents, handleAuth } from "./utils.js";
 handleAuth();
 
 // Fetching the logged-in organizer's data from localStorage
@@ -87,8 +87,6 @@ const addEvent = () => {
     totalSeats: document.getElementById("totalSeats").value.trim(),
   };
 
-  console.log(formData);
-
   const generateId = () => {
     return "event-" + allEvents.length;
   };
@@ -138,9 +136,85 @@ function deleteEvent(eventId) {
   renderDashboard();
 }
 
-function editEvent(eventId) {
+async function editEvent(eventId) {
   // Placeholder - link to edit page or open a modal
-  alert("Edit functionality is not implemented yet.");
+  let events = await fetchEvents();
+  const currentEvent = events.find((e) => e.eventId === eventId);
+  const currentEventIndex = events.findIndex(
+    (event) => event.eventId === eventId
+  );
+
+  //Function to set form inputs to previous event data
+  const setFormInputs = () => {
+    document.getElementById("eventTitle").value = currentEvent.title;
+    document.getElementById("eventDescription").value =
+      currentEvent.description;
+    document.getElementById("eventDate").value = currentEvent.date;
+    document.getElementById("eventLocation").value = currentEvent.location;
+    document.getElementById("eventPrice").value = currentEvent.price.replace(
+      "$",
+      ""
+    );
+    document.getElementById("eventCategory").value = currentEvent.category;
+    document.getElementById("eventImage").value = currentEvent.image;
+
+    document.getElementById("totalSeats").value =
+      currentEvent.totalSeatsAvailable;
+  };
+  setFormInputs();
+
+  const eventModal = new bootstrap.Modal(
+    document.getElementById("addEventModal")
+  );
+  eventModal.show();
+
+  const editEventBtn = document.getElementById("addEventButton");
+  editEventBtn.textContent = "Save Changes";
+  editEventBtn.addEventListener("click", () => saveChanges());
+
+  const saveChanges = () => {
+    const formData = {
+      eventId: currentEvent.eventId,
+      title: document.getElementById("eventTitle").value.trim(),
+      description: document.getElementById("eventDescription").value.trim(),
+      date: document.getElementById("eventDate").value.trim(),
+      location: document.getElementById("eventLocation").value.trim(),
+      price: document.getElementById("eventPrice").value.trim(),
+      category: document.getElementById("eventCategory").value.trim(),
+      imageUrl: document.getElementById("eventImage").value.trim(),
+      totalSeats: parseInt(document.getElementById("totalSeats").value.trim()),
+    };
+
+    const newEvent = {
+      eventId: formData.eventId,
+      organizerId: currentOrganizer.id,
+      organizerName: currentOrganizer.name,
+      registeredUsers: currentEvent.registeredUsers,
+      title: formData.title,
+      date: "Monday - 31st March 2025 - 22:00",
+      location: formData.location,
+      price: "$" + formData.price,
+      followers: "23.5k",
+      attendees: 0,
+      description: formData.description,
+      category: formData.category,
+      image: formData.imageUrl,
+      totalSeatsAvailable: formData.totalSeats,
+      seatsBooked: 0,
+    };
+
+    allEvents[currentEventIndex] = newEvent;
+    localStorage.setItem("events", JSON.stringify(allEvents));
+
+    // Update organizer's own data too
+    currentOrganizer.events.push(newEvent);
+    const orgIndex = organizers.findIndex((o) => o.id === currentOrganizer.id);
+    organizers[orgIndex] = currentOrganizer;
+    localStorage.setItem("organizers", JSON.stringify(organizers));
+
+    renderDashboard();
+    eventModal.hide()
+  };
 }
 
 window.editEvent = editEvent;
