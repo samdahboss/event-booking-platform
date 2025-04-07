@@ -115,13 +115,67 @@ const addEvent = () => {
     return newId;
   };
 
+  // console.log(formData.date);
+
+  //Function to validate form inputs
+  const validateForm = () => {
+    const requiredFields = [
+      "eventTitle",
+      "eventDescription",
+      "eventDate",
+      "eventLocation",
+      "eventPrice",
+      "eventCategory",
+      "eventImage",
+      "totalSeats",
+    ];
+    let isValid = true;
+    requiredFields.forEach((field) => {
+      const input = document.getElementById(field);
+      if (input.value.trim() === "") {
+        isValid = false;
+        input.classList.add("is-invalid");
+      } else {
+        input.classList.remove("is-invalid");
+      }
+    });
+    return isValid;
+  };
+  // Validate form inputs
+  if (!validateForm()) {
+    alert("Please fill in all required fields.");
+    return;
+  }
+
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+  
+    // Days and months arrays
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+  
+    // Extract components
+    const dayName = days[date.getDay()]; // Day of the week
+    const day = date.getDate(); // Day of the month
+    const month = months[date.getMonth()]; // Month name
+    const year = date.getFullYear(); // Year
+    const hours = String(date.getHours()).padStart(2, "0"); // Hours (2 digits)
+    const minutes = String(date.getMinutes()).padStart(2, "0"); // Minutes (2 digits)
+  
+    // Format the date
+    return `${dayName} - ${day} ${month} ${year} - ${hours}:${minutes}`;
+  }
+
   const newEvent = {
     eventId: generateId(),
     organizerId: currentOrganizer.id,
     organizerName: currentOrganizer.name,
     registeredUsers: [],
     title: formData.title,
-    date: "Monday - 31st March 2025 - 22:00",
+    date: formatDate(formData.date),
     location: formData.location,
     price: "$" + formData.price,
     followers: "23.5k",
@@ -309,5 +363,8 @@ navLinks.forEach((link) => {
       eventsTable.classList.remove("d-none");
       analyticsChart.classList.add("d-none");
     }
+
+    body.style.overflowY = "auto"; // Restore scrolling
+    sidebar.classList.toggle("show");
   });
 });

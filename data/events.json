@@ -15,7 +15,7 @@
       "category": "Music",
       "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7",
       "totalSeatsAvailable": 500,
-      "seatsBooked": 500
+      "seatsBooked": 0
     },
     {
       "eventId": "event-2",
@@ -32,7 +32,7 @@
       "category": "Community",
       "image": "https://images.unsplash.com/photo-1515658323406-25d61c141a6e",
       "totalSeatsAvailable": 300,
-      "seatsBooked": 150
+      "seatsBooked": 0
     },
     {
       "eventId": "event-3",
@@ -49,7 +49,7 @@
       "category": "Community",
       "image": "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b",
       "totalSeatsAvailable": 200,
-      "seatsBooked": 80
+      "seatsBooked": 0
     },
     {
       "eventId": "event-4",
@@ -66,7 +66,7 @@
       "category": "Politics",
       "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09",
       "totalSeatsAvailable": 400,
-      "seatsBooked": 200
+      "seatsBooked": 0
     },
     {
       "eventId": "event-5",
@@ -83,7 +83,7 @@
       "category": "Music",
       "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819",
       "totalSeatsAvailable": 600,
-      "seatsBooked": 300
+      "seatsBooked": 0
     },
     {
       "eventId": "event-6",
@@ -100,7 +100,7 @@
       "category": "Community",
       "image": "https://images.unsplash.com/photo-1522543558187-768b6df7c25c",
       "totalSeatsAvailable": 350,
-      "seatsBooked": 180
+      "seatsBooked": 0
     },
     {
       "eventId": "event-7",
@@ -117,7 +117,7 @@
       "category": "Community",
       "image": "https://images.unsplash.com/photo-1624006229221-2abd931f266b",
       "totalSeatsAvailable": 250,
-      "seatsBooked": 100
+      "seatsBooked": 0
     },
     {
       "eventId": "event-8",
@@ -134,7 +134,7 @@
       "category": "Food & Drink",
       "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "totalSeatsAvailable": 300,
-      "seatsBooked": 150
+      "seatsBooked": 0
     },
     {
       "eventId": "event-9",
@@ -151,7 +151,7 @@
       "category": "Food & Drink",
       "image": "https://plus.unsplash.com/premium_photo-1663099970872-e1bdc46b7660?q=80&w=2143&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "totalSeatsAvailable": 200,
-      "seatsBooked": 100
+      "seatsBooked": 0
     },
     {
       "eventId": "event-10",
@@ -168,7 +168,7 @@
       "category": "Music",
       "image": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "totalSeatsAvailable": 500,
-      "seatsBooked": 250
+      "seatsBooked": 0
     },
     {
       "eventId": "event-11",
@@ -185,7 +185,7 @@
       "category": "Visual Arts",
       "image": "https://images.unsplash.com/photo-1565103420311-8cbbc3cd87b8?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "totalSeatsAvailable": 300,
-      "seatsBooked": 150
+      "seatsBooked": 0
     },
     {
       "eventId": "event-12",
@@ -202,7 +202,7 @@
       "category": "Visual Arts",
       "image": "https://images.unsplash.com/photo-1537365587684-f490102e1225?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "totalSeatsAvailable": 400,
-      "seatsBooked": 200
+      "seatsBooked": 0
     },
     {
       "eventId": "event-13",
@@ -219,7 +219,7 @@
       "category": "Community",
       "image": "https://images.unsplash.com/photo-1623244727304-54995b233b1c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "totalSeatsAvailable": 150,
-      "seatsBooked": 75
+      "seatsBooked": 0
     },
     {
       "eventId": "event-14",
@@ -236,7 +236,7 @@
       "category": "Politics",
       "image": "https://images.unsplash.com/photo-1597711662967-b5dac822f5ac?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "totalSeatsAvailable": 500,
-      "seatsBooked": 250
+      "seatsBooked": 0
     },
     {
       "eventId": "event-15",
@@ -253,7 +253,7 @@
       "category": "Politics",
       "image": "https://images.unsplash.com/photo-1650984672581-8f305d4805ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "totalSeatsAvailable": 300,
-      "seatsBooked": 150
+      "seatsBooked": 0
     },
     {
       "eventId": "event-16",
@@ -270,7 +270,7 @@
       "category": "Music",
       "image": "https://images.unsplash.com/photo-1552267094-b4c3771bd5e4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "totalSeatsAvailable": 700,
-      "seatsBooked": 350
+      "seatsBooked": 0
     }
   ]
 }
