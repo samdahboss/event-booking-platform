@@ -1,15 +1,39 @@
 import { fetchEvents, handleAuth } from "./utils.js";
 handleAuth();
 
+// Function to fetch organizers data from json file and store it in local storage if it's not already there
+const storeInitialOranizers = async () => {
+  try {
+    if (localStorage.getItem("organizers")) {
+      return; // Return if organizers from local storage is available
+    }
+
+    // Fetch organizers data from the JSON file
+    const response = await fetch("../data/organizers.json");
+    if (!response.ok) {
+      throw new Error("Failed to fetch organizers data");
+    }
+
+    const result = await response.json();
+    localStorage.setItem("organizers", JSON.stringify(result)); // Store organizers in local storage
+  } catch (error) {
+    console.error("Error fetching events:", error);
+  }
+};
+storeInitialOranizers();
+
+// Fetching the logged-in organizer's data from localStorage
 const organizers = JSON.parse(localStorage.getItem("organizers")) || [];
 const loggedInId = JSON.parse(localStorage.getItem("loggedInOrganizerId"));
 
+// Fetching all events from localStorage
 let allEvents;
 const getAllEvents = async () => {
   allEvents = await fetchEvents();
 };
 getAllEvents();
 
+//Importing the Event Modal from the components folder
 const getEventModal = async () => {
   const modalContainer = document.getElementById("addEventModal"); // Select the modal container element
 
@@ -24,30 +48,14 @@ const getEventModal = async () => {
 };
 getEventModal();
 
-const currentOrganizer = organizers.find(
-  (organizer) => organizer.id === loggedInId
-);
-
-if (!currentOrganizer) {
-  alert("You're not logged in as an organizer!");
-  window.location.href = "/index.html";
-}
-
-document.getElementById("organizerName").innerText = currentOrganizer.name;
-document.getElementById("organizerEmail").innerText = currentOrganizer.email;
-
-async function getMyEvents() {
-  const events = await fetchEvents();
-  return events.filter((e) => e.organizerId === currentOrganizer.id);
-}
-
+// Event listener for the sidebar toggle button
 const toggleSidebarBtns = document.querySelectorAll(".toggle-sidebar");
-const sidebar =document.getElementById("sidebar");
+const sidebar = document.getElementById("sidebar");
 const body = document.body;
 toggleSidebarBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    if(!sidebar.classList.contains("show")){
-     body.style.overflowY = "hidden"
+    if (!sidebar.classList.contains("show")) {
+      body.style.overflowY = "hidden";
     } else {
       body.style.overflowY = "auto"; // Restore scrolling
     }
@@ -55,41 +63,28 @@ toggleSidebarBtns.forEach((btn) => {
   });
 });
 
-function deleteEvent(eventId) {
-  let events = JSON.parse(localStorage.getItem("events")) || [];
-  events = events.filter((e) => e.id !== eventId);
-  localStorage.setItem("events", JSON.stringify(events));
+//Get the logged-in organizer's data
+const currentOrganizer = organizers.find(
+  (organizer) => organizer.id === loggedInId
+);
 
-  const orgIndex = organizers.findIndex((o) => o.id === currentOrganizer.id);
-  if (orgIndex !== -1) {
-    organizers[orgIndex].events = organizers[orgIndex].events.filter(
-      (e) => e.id !== eventId
-    );
-    localStorage.setItem("organizers", JSON.stringify(organizers));
-  }
-
-  renderDashboard();
+// Check if the organizer is logged in
+if (!currentOrganizer) {
+  alert("You're not logged in as an organizer!");
+  window.location.href = "/index.html";
 }
 
-function viewUsers(eventId) {
-  const event = allEvents.find((e) => e.id === eventId);
-  if (!event) return alert("Event not found");
-
-  const users = event.registeredUsers;
-  if (!users.length) return alert("No users registered yet.");
-
-  let msg = `Registered Users for "${event.name}":\n`;
-  users.forEach((u, i) => {
-    msg += `${i + 1}. ${u.name} (${u.email})\n`;
-  });
-  alert(msg);
+//Getting the logged-in organizer's Events
+async function getCurrentOrganizerEvent() {
+  const events = await fetchEvents();
+  return events.filter((e) => e.organizerId === currentOrganizer.id);
 }
 
-function editEvent(eventId) {
-  // Placeholder - link to edit page or open a modal
-  alert("Edit functionality is not implemented yet.");
-}
+// Display the organizer's name and email in the dashboard
+document.getElementById("organizerName").innerText = currentOrganizer.name;
+document.getElementById("organizerEmail").innerText = currentOrganizer.email;
 
+//Add Event Feature for Organizers
 const showAddEventModal = document.getElementById("add-event-btn");
 showAddEventModal.addEventListener("click", () => {
   // Show the modal
@@ -101,7 +96,6 @@ showAddEventModal.addEventListener("click", () => {
   const addEventBtn = document.getElementById("addEventButton");
   addEventBtn.addEventListener("click", () => addEvent());
 });
-
 const addEvent = () => {
   const formData = {
     title: document.getElementById("eventTitle").value.trim(),
@@ -149,11 +143,36 @@ const addEvent = () => {
   renderDashboard();
 };
 
+function deleteEvent(eventId) {
+  let events = JSON.parse(localStorage.getItem("events")) || [];
+  events = events.filter((e) => e.eventId !== eventId);
+  localStorage.setItem("events", JSON.stringify(events));
+
+  const orgIndex = organizers.findIndex((o) => o.id === currentOrganizer.id);
+  if (orgIndex !== -1) {
+    organizers[orgIndex].events = organizers[orgIndex].events.filter(
+      (e) => e.id !== eventId
+    );
+    localStorage.setItem("organizers", JSON.stringify(organizers));
+  }
+
+  renderDashboard();
+}
+
+function editEvent(eventId) {
+  // Placeholder - link to edit page or open a modal
+  alert("Edit functionality is not implemented yet.");
+}
+
+window.editEvent = editEvent;
+window.deleteEvent = deleteEvent;
+
+//Function to render the dashboard
 async function renderDashboard() {
   const table = document.getElementById("eventsTable");
   table.innerHTML = "";
 
-  const events = await getMyEvents();
+  const events = await getCurrentOrganizerEvent();
 
   // Stats
   document.getElementById("totalEvents").innerText = events.length;
@@ -174,8 +193,8 @@ async function renderDashboard() {
         <td>${event.date}</td>
         <td>${event.registeredUsers.length}</td>
         <td>
-          <button class="btn btn-sm btn-warning me-1" onclick="editEvent('${event.id}')">Edit</button>
-          <button class="btn btn-sm btn-danger" onclick="deleteEvent('${event.id}')">Delete</button>
+          <button class="btn btn-sm btn-warning me-1" onclick="editEvent('${event.eventId}')">Edit</button>
+          <button class="btn btn-sm btn-danger" onclick="deleteEvent('${event.eventId}')">Delete</button>
         </td>
       `;
 
