@@ -88,8 +88,13 @@ const addEvent = () => {
   };
 
   const generateId = () => {
-    return "event-" + allEvents.length;
+    let newId;
+    do {
+      newId = "event-" + Math.floor(Math.random() * 100000); // Generate a random ID
+    } while (allEvents.some((event) => event.eventId === newId)); // Check if the ID already exists
+    return newId;
   };
+  
   const newEvent = {
     eventId: generateId(),
     organizerId: currentOrganizer.id,
