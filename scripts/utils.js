@@ -62,6 +62,26 @@ export const fetchEvents = async () => {
   }
 };
 
+// Function to fetch organizers data from json file and store it in local storage if it's not already there
+export const storeInitialOrganizers = async () => {
+  try {
+    if (localStorage.getItem("organizers")) {
+      return; // Return if organizers from local storage is available
+    }
+
+    // Fetch organizers data from the JSON file
+    const response = await fetch("../data/organizers.json");
+    if (!response.ok) {
+      throw new Error("Failed to fetch organizers data");
+    }
+
+    const result = await response.json();
+    localStorage.setItem("organizers", JSON.stringify(result)); // Store organizers in local storage
+  } catch (error) {
+    console.error("Error fetching events:", error);
+  }
+};
+
 // Function to check if a specific query parameter exists in the URL
 export const hasQueryParam = (param) => {
   const urlParams = new URLSearchParams(window.location.search);

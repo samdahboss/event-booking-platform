@@ -1,26 +1,5 @@
-import { fetchEvents, handleAuth } from "./utils.js";
+import { fetchEvents, handleAuth} from "./utils.js";
 handleAuth();
-
-// Function to fetch organizers data from json file and store it in local storage if it's not already there
-const storeInitialOranizers = async () => {
-  try {
-    if (localStorage.getItem("organizers")) {
-      return; // Return if organizers from local storage is available
-    }
-
-    // Fetch organizers data from the JSON file
-    const response = await fetch("../data/organizers.json");
-    if (!response.ok) {
-      throw new Error("Failed to fetch organizers data");
-    }
-
-    const result = await response.json();
-    localStorage.setItem("organizers", JSON.stringify(result)); // Store organizers in local storage
-  } catch (error) {
-    console.error("Error fetching events:", error);
-  }
-};
-storeInitialOranizers();
 
 // Fetching the logged-in organizer's data from localStorage
 const organizers = JSON.parse(localStorage.getItem("organizers")) || [];

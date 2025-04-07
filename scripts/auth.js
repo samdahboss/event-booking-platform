@@ -1,3 +1,6 @@
+import { storeInitialOrganizers } from "./utils";
+storeInitialOrganizers();// Function to fetch organizers data from json file and store it in local storage if it's not already there
+
 function toggleForm() {
   document.getElementById("sign-in").style.display =
     document.getElementById("sign-in").style.display === "none"
