@@ -1,9 +1,28 @@
-import { handleAuth } from "./utils.js";
+import { fetchEvents, handleAuth } from "./utils.js";
 handleAuth();
 
 const organizers = JSON.parse(localStorage.getItem("organizers")) || [];
 const loggedInId = JSON.parse(localStorage.getItem("loggedInOrganizerId"));
-const allEvents = JSON.parse(localStorage.getItem("events")) || [];
+
+let allEvents;
+const getAllEvents = async () => {
+  allEvents = await fetchEvents();
+};
+getAllEvents();
+
+const getEventModal = async () => {
+  const modalContainer = document.getElementById("addEventModal"); // Select the modal container element
+
+  // Fetch the modal HTML and add it to the modal container
+  try {
+    const modal = await fetch("./components/add-events-modal.html");
+    const modalText = await modal.text();
+    modalContainer.innerHTML = modalText;
+  } catch (err) {
+    console.error("Error fetching modal:", err);
+  }
+};
+getEventModal();
 
 const currentOrganizer = organizers.find(
   (organizer) => organizer.id === loggedInId
@@ -17,44 +36,24 @@ if (!currentOrganizer) {
 document.getElementById("organizerName").innerText = currentOrganizer.name;
 document.getElementById("organizerEmail").innerText = currentOrganizer.email;
 
-function getMyEvents() {
-  return allEvents.filter((e) => e.organizerId === currentOrganizer.id);
+async function getMyEvents() {
+  const events = await fetchEvents();
+  return events.filter((e) => e.organizerId === currentOrganizer.id);
 }
 
-function renderDashboard() {
-  const table = document.getElementById("eventsTable");
-  table.innerHTML = "";
-
-  const events = getMyEvents();
-
-  // Stats
-  document.getElementById("totalEvents").innerText = events.length;
-  document.getElementById("totalUsers").innerText = events.reduce(
-    (a, b) => a + b.registeredUsers.length,
-    0
-  );
-  document.getElementById("topEvent").innerText =
-    events.sort(
-      (a, b) => b.registeredUsers.length - a.registeredUsers.length
-    )[0]?.title || "N/A";
-
-  events.forEach((event) => {
-    const row = document.createElement("tr");
-
-    row.innerHTML = `
-        <td>${event.title}</td>
-        <td>${event.date}</td>
-        <td>${event.registeredUsers.length}</td>
-        <td>
-          <button class="btn btn-sm btn-info me-1" onclick="viewUsers('${event.id}')">Users</button>
-          <button class="btn btn-sm btn-warning me-1" onclick="editEvent('${event.id}')">Edit</button>
-          <button class="btn btn-sm btn-danger" onclick="deleteEvent('${event.id}')">Delete</button>
-        </td>
-      `;
-
-    table.appendChild(row);
+const toggleSidebarBtns = document.querySelectorAll(".toggle-sidebar");
+const sidebar =document.getElementById("sidebar");
+const body = document.body;
+toggleSidebarBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if(!sidebar.classList.contains("show")){
+     body.style.overflowY = "hidden"
+    } else {
+      body.style.overflowY = "auto"; // Restore scrolling
+    }
+    sidebar.classList.toggle("show");
   });
-}
+});
 
 function deleteEvent(eventId) {
   let events = JSON.parse(localStorage.getItem("events")) || [];
@@ -91,25 +90,55 @@ function editEvent(eventId) {
   alert("Edit functionality is not implemented yet.");
 }
 
-function addEvent() {
-  // Placeholder - link to event creation page or use prompt
-  const name = prompt("Enter Event Name:");
-  const date = prompt("Enter Event Date (YYYY-MM-DD):");
+const showAddEventModal = document.getElementById("add-event-btn");
+showAddEventModal.addEventListener("click", () => {
+  // Show the modal
+  const eventModal = new bootstrap.Modal(
+    document.getElementById("addEventModal")
+  );
+  eventModal.show();
 
-  if (!name || !date) return;
+  const addEventBtn = document.getElementById("addEventButton");
+  addEventBtn.addEventListener("click", () => addEvent());
+});
 
-  const newEvent = {
-    id: Date.now().toString(),
-    name,
-    date,
-    registeredUsers: [],
-    organizerId: currentOrganizer.id,
-    organizerName: currentOrganizer.name,
+const addEvent = () => {
+  const formData = {
+    title: document.getElementById("eventTitle").value.trim(),
+    description: document.getElementById("eventDescription").value.trim(),
+    date: document.getElementById("eventDate").value.trim(),
+    location: document.getElementById("eventLocation").value.trim(),
+    price: document.getElementById("eventPrice").value.trim(),
+    category: document.getElementById("eventCategory").value.trim(),
+    imageUrl: document.getElementById("eventImage").value.trim(),
+    totalSeats: document.getElementById("totalSeats").value.trim(),
   };
 
-  const events = JSON.parse(localStorage.getItem("events")) || [];
-  events.push(newEvent);
-  localStorage.setItem("events", JSON.stringify(events));
+  console.log(formData);
+
+  const generateId = () => {
+    return "event-" + allEvents.length;
+  };
+  const newEvent = {
+    eventId: generateId(),
+    organizerId: currentOrganizer.id,
+    organizerName: currentOrganizer.name,
+    registeredUsers: [],
+    title: formData.title,
+    date: "Monday - 31st March 2025 - 22:00",
+    location: formData.location,
+    price: "$" + formData.price,
+    followers: "23.5k",
+    attendees: 0,
+    description: formData.description,
+    category: formData.category,
+    image: formData.imageUrl,
+    totalSeatsAvailable: formData.totalSeats,
+    seatsBooked: 0,
+  };
+
+  allEvents.push(newEvent);
+  localStorage.setItem("events", JSON.stringify(allEvents));
 
   // Update organizer's own data too
   currentOrganizer.events.push(newEvent);
@@ -118,6 +147,39 @@ function addEvent() {
   localStorage.setItem("organizers", JSON.stringify(organizers));
 
   renderDashboard();
-}
+};
 
+async function renderDashboard() {
+  const table = document.getElementById("eventsTable");
+  table.innerHTML = "";
+
+  const events = await getMyEvents();
+
+  // Stats
+  document.getElementById("totalEvents").innerText = events.length;
+  document.getElementById("totalUsers").innerText = events.reduce(
+    (a, b) => a + b.registeredUsers.length,
+    0
+  );
+  document.getElementById("topEvent").innerText =
+    events.sort(
+      (a, b) => b.registeredUsers.length - a.registeredUsers.length
+    )[0]?.title || "N/A";
+
+  events.forEach((event) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>${event.title}</td>
+        <td>${event.date}</td>
+        <td>${event.registeredUsers.length}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-1" onclick="editEvent('${event.id}')">Edit</button>
+          <button class="btn btn-sm btn-danger" onclick="deleteEvent('${event.id}')">Delete</button>
+        </td>
+      `;
+
+    table.appendChild(row);
+  });
+}
 renderDashboard();

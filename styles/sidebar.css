@@ -1,6 +1,5 @@
 #sidebar {
   height: 100vh;
-  overflow-y: auto;
   color: black !important;
   border-right: 1px solid #ccc;
 }
