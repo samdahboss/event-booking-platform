@@ -23,7 +23,6 @@ hidePreloader(); // Call the function to hide the preloader
 getComponents(); // Call the function to get Navbar and Footer components
 handleAuth(); // Call the function to handle authentication
 
-
 // Function to toggle mobile filter menu
 (() => {
   const filterClose = document.querySelector(".filter-close-btn");
@@ -68,6 +67,12 @@ setTimeout(() => {
   const searchButton = document.getElementById("search-btn");
   const searchForm = document.querySelector("#search-form");
 
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.trim(); // Get the search query
+
+    searchFilterRender(query);
+  });
+
   const searchFilterRender = async (query) => {
     if (query === "") {
       renderCards([], query);
@@ -89,7 +94,6 @@ setTimeout(() => {
     e.preventDefault(); // Prevent form submission
 
     const query = searchInput.value.trim(); // Get the search query
-    searchInput.value = ""; // Clear the search input
 
     searchFilterRender(query); // Call the search filter and render function
   });
@@ -98,7 +102,6 @@ setTimeout(() => {
     e.preventDefault(); // Prevent form submission
 
     const query = searchInput.value.trim(); // Get the search query
-    searchInput.value = ""; // Clear the search input
 
     searchFilterRender(query); // Call the search filter and render function
   });

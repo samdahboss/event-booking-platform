@@ -81,6 +81,7 @@ export const handleAuth = () => {
   const isSignedIn = localStorage.getItem("loggedInOrganizerId") ? true : false;
   setTimeout(() => {
     const navAuthBtn = document.getElementById("nav-auth-btn");
+    const dashboardLink = document.getElementById("dashboard-link");
 
     if (isSignedIn) {
       navAuthBtn.innerHTML = `<i class="fas fa-bolt"></i>Sign Out`;
@@ -88,12 +89,16 @@ export const handleAuth = () => {
         localStorage.removeItem("loggedInOrganizerId");
         window.location.reload();
       };
+
+      dashboardLink.classList.add("d-block")
     } else {
       navAuthBtn.innerHTML = `<i class="fas fa-bolt"></i>Become A Host`;
       navAuthBtn.onclick = function () {
         window.location.href = "/auth.html";
         localStorage.removeItem("loggedInOrganizerId");
       };
+
+      dashboardLink.classList.add("d-none")
     }
   }, 2000);
 };
