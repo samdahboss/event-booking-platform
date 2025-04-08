@@ -110,7 +110,7 @@ export const handleAuth = () => {
         window.location.reload();
       };
 
-      dashboardLink.classList.add("d-block")
+      dashboardLink.classList.add("d-block");
     } else {
       navAuthBtn.innerHTML = `<i class="fas fa-bolt"></i>Become A Host`;
       navAuthBtn.onclick = function () {
@@ -118,11 +118,10 @@ export const handleAuth = () => {
         localStorage.removeItem("loggedInOrganizerId");
       };
 
-      dashboardLink.classList.add("d-none")
+      dashboardLink.classList.add("d-none");
     }
   }, 2000);
 };
-
 
 export function showToast(message, type = "info") {
   Toastify({
@@ -135,10 +134,10 @@ export function showToast(message, type = "info") {
       type === "success"
         ? "green"
         : type === "error"
-        ? "red"
-        : type === "warning"
-        ? "orange"
-        : "blue", // Set color based on type
+          ? "red"
+          : type === "warning"
+            ? "orange"
+            : "blue", // Set color based on type
     stopOnFocus: true, // Prevents dismissing on hover
   }).showToast();
 }
@@ -152,78 +151,78 @@ export const generateId = () => {
 };
 
 export function formatDate(dateString) {
-    const date = new Date(dateString);
+  const date = new Date(dateString);
 
-    // Days and months arrays
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
+  // Days and months arrays
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-    // Extract components
-    const dayName = days[date.getDay()]; // Day of the week
-    const day = date.getDate(); // Day of the month
-    const month = months[date.getMonth()]; // Month name
-    const year = date.getFullYear(); // Year
-    const hours = String(date.getHours()).padStart(2, "0"); // Hours (2 digits)
-    const minutes = String(date.getMinutes()).padStart(2, "0"); // Minutes (2 digits)
+  // Extract components
+  const dayName = days[date.getDay()]; // Day of the week
+  const day = date.getDate(); // Day of the month
+  const month = months[date.getMonth()]; // Month name
+  const year = date.getFullYear(); // Year
+  const hours = String(date.getHours()).padStart(2, "0"); // Hours (2 digits)
+  const minutes = String(date.getMinutes()).padStart(2, "0"); // Minutes (2 digits)
 
-    // Format the date
-    return `${dayName} - ${day} ${month} ${year} - ${hours}:${minutes}`;
-  }
+  // Format the date
+  return `${dayName} - ${day} ${month} ${year} - ${hours}:${minutes}`;
+}
 
-  export const parseCustomDate = (dateString) => {
-    // Remove the day of the week (e.g., "Tuesday - ")
-    const withoutDay = dateString.replace(/^[A-Za-z]+\s-\s/, "");
+export const parseCustomDate = (dateString) => {
+  // Remove the day of the week (e.g., "Tuesday - ")
+  const withoutDay = dateString.replace(/^[A-Za-z]+\s-\s/, "");
 
-    // Remove ordinal suffixes (e.g., "22nd" -> "22")
-    const withoutSuffix = withoutDay.replace(/(\d+)(st|nd|rd|th)/, "$1");
+  // Remove ordinal suffixes (e.g., "22nd" -> "22")
+  const withoutSuffix = withoutDay.replace(/(\d+)(st|nd|rd|th)/, "$1");
 
-    //Remove Time (e.g., "-22:00" -> "")
-    const withoutTime = withoutSuffix.replace(/-\s*\d{2}:\d{2}$/, "").trim();
+  //Remove Time (e.g., "-22:00" -> "")
+  const withoutTime = withoutSuffix.replace(/-\s*\d{2}:\d{2}$/, "").trim();
 
-    // Rearrange the date string to "Month dd, yyyy"
-    const formattedDate = withoutTime.replace(
-      /^(\d+)\s(\w+)\s(\d{4})$/,
-      "$2 $1, $3"
-    );
+  // Rearrange the date string to "Month dd, yyyy"
+  const formattedDate = withoutTime.replace(
+    /^(\d+)\s(\w+)\s(\d{4})$/,
+    "$2 $1, $3"
+  );
 
-    // Convert to a standard date format
-    const standardDate = new Date(formattedDate);
+  // Convert to a standard date format
+  const standardDate = new Date(formattedDate);
 
-    // Return the parsed Date object
-    return standardDate;
-  };
+  // Return the parsed Date object
+  return standardDate;
+};
 
-  export const validateForm = (requiredFields) => {
-    let isValid = true;
-    requiredFields.forEach((field) => {
-      const input = document.getElementById(field);
-      if (input.value.trim() === "") {
-        isValid = false;
-        input.classList.add("is-invalid");
-      } else {
-        input.classList.remove("is-invalid");
-      }
-    });
-    return isValid;
-  };
+export const validateForm = (requiredFields) => {
+  let isValid = true;
+  requiredFields.forEach((field) => {
+    const input = document.getElementById(field);
+    if (input.value.trim() === "") {
+      isValid = false;
+      input.classList.add("is-invalid");
+    } else {
+      input.classList.remove("is-invalid");
+    }
+  });
+  return isValid;
+};
