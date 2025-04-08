@@ -71,16 +71,6 @@ async function getCurrentOrganizerEvent() {
 //Add Event Feature for Organizers
 const showAddEventModal = document.getElementById("add-event-btn");
 showAddEventModal.addEventListener("click", () => {
-  // Show the modal
-  const eventModal = new bootstrap.Modal(
-    document.getElementById("addEventModal")
-  );
-  eventModal.show();
-
-  const addEventBtn = document.getElementById("addEventButton");
-  addEventBtn.addEventListener("click", () => addEvent());
-});
-const addEvent = () => {
   //Function to set form inputs to previous event data
   const setFormInputs = () => {
     document.getElementById("eventTitle").value = "";
@@ -94,7 +84,17 @@ const addEvent = () => {
     document.getElementById("totalSeats").value = "";
   };
   setFormInputs();
+  // Show the modal
+  const eventModal = new bootstrap.Modal(
+    document.getElementById("addEventModal")
+  );
+  eventModal.show();
 
+  const addEventBtn = document.getElementById("addEventButton");
+  addEventBtn.addEventListener("click", () => addEvent());
+  addEventBtn.textContent = "Add Event";
+});
+const addEvent = () => {
   const formData = {
     title: document.getElementById("eventTitle").value.trim(),
     description: document.getElementById("eventDescription").value.trim(),
@@ -106,7 +106,6 @@ const addEvent = () => {
     totalSeats: document.getElementById("totalSeats").value.trim(),
   };
 
-  
   const generateId = () => {
     let newId;
     do {
@@ -115,7 +114,45 @@ const addEvent = () => {
     return newId;
   };
 
-  // console.log(formData.date);
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+
+    // Days and months arrays
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Extract components
+    const dayName = days[date.getDay()]; // Day of the week
+    const day = date.getDate(); // Day of the month
+    const month = months[date.getMonth()]; // Month name
+    const year = date.getFullYear(); // Year
+    const hours = String(date.getHours()).padStart(2, "0"); // Hours (2 digits)
+    const minutes = String(date.getMinutes()).padStart(2, "0"); // Minutes (2 digits)
+
+    // Format the date
+    return `${dayName} - ${day} ${month} ${year} - ${hours}:${minutes}`;
+  }
 
   //Function to validate form inputs
   const validateForm = () => {
@@ -147,28 +184,6 @@ const addEvent = () => {
     return;
   }
 
-  function formatDate(dateString) {
-    const date = new Date(dateString);
-  
-    // Days and months arrays
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const months = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-  
-    // Extract components
-    const dayName = days[date.getDay()]; // Day of the week
-    const day = date.getDate(); // Day of the month
-    const month = months[date.getMonth()]; // Month name
-    const year = date.getFullYear(); // Year
-    const hours = String(date.getHours()).padStart(2, "0"); // Hours (2 digits)
-    const minutes = String(date.getMinutes()).padStart(2, "0"); // Minutes (2 digits)
-  
-    // Format the date
-    return `${dayName} - ${day} ${month} ${year} - ${hours}:${minutes}`;
-  }
-
   const newEvent = {
     eventId: generateId(),
     organizerId: currentOrganizer.id,
@@ -197,6 +212,11 @@ const addEvent = () => {
   localStorage.setItem("organizers", JSON.stringify(organizers));
 
   renderDashboard();
+
+  const eventModal = new bootstrap.Modal(
+    document.getElementById("addEventModal")
+  );
+  eventModal.hide();
 };
 
 function deleteEvent(eventId) {
@@ -223,12 +243,37 @@ async function editEvent(eventId) {
     (event) => event.eventId === eventId
   );
 
+  const parseCustomDate = (dateString) => {
+    // Remove the day of the week (e.g., "Tuesday - ")
+    const withoutDay = dateString.replace(/^[A-Za-z]+\s-\s/, "");
+
+    // Remove ordinal suffixes (e.g., "22nd" -> "22")
+    const withoutSuffix = withoutDay.replace(/(\d+)(st|nd|rd|th)/, "$1");
+
+    //Remove Time (e.g., "-22:00" -> "")
+    const withoutTime = withoutSuffix.replace(/-\s*\d{2}:\d{2}$/, "").trim();
+
+    // Rearrange the date string to "Month dd, yyyy"
+    const formattedDate = withoutTime.replace(
+      /^(\d+)\s(\w+)\s(\d{4})$/,
+      "$2 $1, $3"
+    );
+
+    // Convert to a standard date format
+    const standardDate = new Date(formattedDate);
+
+    // Return the parsed Date object
+    return standardDate;
+  };
+
   //Function to set form inputs to previous event data
   const setFormInputs = () => {
     document.getElementById("eventTitle").value = currentEvent.title;
     document.getElementById("eventDescription").value =
       currentEvent.description;
-    document.getElementById("eventDate").value = currentEvent.date;
+    document.getElementById("eventDate").value = parseCustomDate(
+      currentEvent.date
+    );
     document.getElementById("eventLocation").value = currentEvent.location;
     document.getElementById("eventPrice").value = currentEvent.price.replace(
       "$",
@@ -353,12 +398,11 @@ navLinks.forEach((link) => {
     const eventsTable = document.getElementById("events-table");
     const analyticsChart = document.getElementById("analytics-chart");
 
-    if(currentView === "Analytics") {
+    if (currentView === "Analytics") {
       eventsTableLabel.classList.add("d-none");
       eventsTable.classList.add("d-none");
       analyticsChart.classList.remove("d-none");
-    }
-    else if(currentView === "Home") {
+    } else if (currentView === "Home") {
       eventsTableLabel.classList.remove("d-none");
       eventsTable.classList.remove("d-none");
       analyticsChart.classList.add("d-none");

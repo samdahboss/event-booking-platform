@@ -94,7 +94,8 @@ const handleFormValidation = (currentEvent, allEvents) => {
       showToast(
         `Only ${
           currentEvent.totalSeatsAvailable - currentEvent.seatsBooked
-        } seats are available for this event.`
+        } seats are available for this event.`,
+         "warning"
       );
       return;
     }
@@ -102,7 +103,8 @@ const handleFormValidation = (currentEvent, allEvents) => {
     // Register the user
     currentEvent.seatsBooked += userSeats;
     showToast(
-      `Thank you, ${userName}! You have successfully registered for ${currentEvent.title}.`
+      `Thank you, ${userName}! You have successfully registered for ${currentEvent.title}.`,
+      "success"
     );
     // Save registration info to local storage
     saveRegistrationInfo(currentEvent.title, userName, userEmail, userSeats);
