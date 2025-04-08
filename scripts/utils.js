@@ -122,3 +122,23 @@ export const handleAuth = () => {
     }
   }, 2000);
 };
+
+
+export function showToast(message, type = "info") {
+  Toastify({
+    text: message,
+    duration: 3000, // Duration in milliseconds
+    close: true, // Show close button
+    gravity: "top", // Position: "top" or "bottom"
+    position: "right", // Position: "left", "center", or "right"
+    backgroundColor:
+      type === "success"
+        ? "green"
+        : type === "error"
+        ? "red"
+        : type === "warning"
+        ? "orange"
+        : "blue", // Set color based on type
+    stopOnFocus: true, // Prevents dismissing on hover
+  }).showToast();
+}

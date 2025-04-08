@@ -1,4 +1,4 @@
-import { storeInitialOrganizers } from "./utils.js";
+import { storeInitialOrganizers, showToast } from "./utils.js";
 storeInitialOrganizers();// Function to fetch organizers data from json file and store it in local storage if it's not already there
 
 function toggleForm() {
@@ -27,7 +27,7 @@ function signUp() {
   };
 
   if (!isValidEmail(email)) {
-    alert("Please enter a valid email address.");
+    showToast("Please enter a valid email address.", "error");
     return;
   }
 
@@ -43,7 +43,7 @@ function signUp() {
   );
 
   if (isExistingorganizer) {
-    alert("An account with this email already exists.");
+    showToast("An account with this email already exists.", "error");
     return;
   }
 
@@ -71,7 +71,7 @@ function signUp() {
     events: [], // Initialize with an empty events array
   });
 
-  // alert("Sign-up successful!");
+  showToast("Sign-up successful!", "success"); // Show success message
   // Simulate a successful sign-up
   window.location.href = "/dashboard.html";
 }
@@ -94,7 +94,7 @@ function signIn() {
   };
 
   if (!isValidEmail(email)) {
-    alert("Please enter a valid email address.");
+    showToast("Please enter a valid email address.","error");
     return;
   }
 
@@ -110,13 +110,13 @@ function signIn() {
   );
 
   if (!organizer) {
-    alert("Invalid email or password.");
+    showToast("Invalid email or password.", "error");
     return;
   }
 
   localStorage.setItem("loggedInOrganizerId", JSON.stringify(organizer.id)); // Store the current organizer in local storage
 
-  // alert("Sign-in successful!");
+  showToast("Sign-in successful!", "success"); // Show success message
   // Simulate a successful sign-in
   window.location.href = "/dashboard.html";
 }

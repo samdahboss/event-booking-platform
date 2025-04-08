@@ -1,4 +1,4 @@
-import { fetchEvents } from "./utils.js";
+import { fetchEvents, showToast } from "./utils.js";
 //Function to Add Registration Feature to Event Cards
 // This function adds a click event listener to each event card
 // When a card is clicked, it opens a modal with event details and a registration button
@@ -91,7 +91,7 @@ const handleFormValidation = (currentEvent, allEvents) => {
       currentEvent.seatsBooked + userSeats >
       currentEvent.totalSeatsAvailable
     ) {
-      alert(
+      showToast(
         `Only ${
           currentEvent.totalSeatsAvailable - currentEvent.seatsBooked
         } seats are available for this event.`
@@ -101,7 +101,7 @@ const handleFormValidation = (currentEvent, allEvents) => {
 
     // Register the user
     currentEvent.seatsBooked += userSeats;
-    alert(
+    showToast(
       `Thank you, ${userName}! You have successfully registered for ${currentEvent.title}.`
     );
     // Save registration info to local storage

@@ -1,4 +1,4 @@
-import { fetchEvents, handleAuth } from "./utils.js";
+import { fetchEvents, handleAuth, showToast } from "./utils.js";
 handleAuth();
 
 import { initCharts } from "./analytics.js";
@@ -143,7 +143,7 @@ const addEvent = () => {
   };
   // Validate form inputs
   if (!validateForm()) {
-    alert("Please fill in all required fields.");
+    showToast("Please fill in all required fields.", "error");
     return;
   }
 
