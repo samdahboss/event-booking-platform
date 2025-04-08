@@ -142,7 +142,8 @@ export function showToast(message, type = "info") {
   }).showToast();
 }
 
-export const generateId = () => {
+export const generateId = async() => {
+  const allEvents = await fetchEvents(); // Fetch all events from local storage
   let newId;
   do {
     newId = "event-" + Math.floor(Math.random() * 100000); // Generate a random ID
