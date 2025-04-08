@@ -1,4 +1,12 @@
-import { fetchEvents, handleAuth, showToast } from "./utils.js";
+import {
+  fetchEvents,
+  handleAuth,
+  showToast,
+  generateId,
+  formatDate,
+  parseCustomDate,
+  validateForm,
+} from "./utils.js";
 handleAuth();
 
 import { initCharts } from "./analytics.js";
@@ -106,57 +114,9 @@ const addEvent = () => {
     totalSeats: document.getElementById("totalSeats").value.trim(),
   };
 
-  const generateId = () => {
-    let newId;
-    do {
-      newId = "event-" + Math.floor(Math.random() * 100000); // Generate a random ID
-    } while (allEvents.some((event) => event.eventId === newId)); // Check if the ID already exists
-    return newId;
-  };
-
-  function formatDate(dateString) {
-    const date = new Date(dateString);
-
-    // Days and months arrays
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    // Extract components
-    const dayName = days[date.getDay()]; // Day of the week
-    const day = date.getDate(); // Day of the month
-    const month = months[date.getMonth()]; // Month name
-    const year = date.getFullYear(); // Year
-    const hours = String(date.getHours()).padStart(2, "0"); // Hours (2 digits)
-    const minutes = String(date.getMinutes()).padStart(2, "0"); // Minutes (2 digits)
-
-    // Format the date
-    return `${dayName} - ${day} ${month} ${year} - ${hours}:${minutes}`;
-  }
-
-  //Function to validate form inputs
-  const validateForm = () => {
-    const requiredFields = [
+  // Validate form inputs
+  if (
+    !validateForm([
       "eventTitle",
       "eventDescription",
       "eventDate",
@@ -165,21 +125,8 @@ const addEvent = () => {
       "eventCategory",
       "eventImage",
       "totalSeats",
-    ];
-    let isValid = true;
-    requiredFields.forEach((field) => {
-      const input = document.getElementById(field);
-      if (input.value.trim() === "") {
-        isValid = false;
-        input.classList.add("is-invalid");
-      } else {
-        input.classList.remove("is-invalid");
-      }
-    });
-    return isValid;
-  };
-  // Validate form inputs
-  if (!validateForm()) {
+    ])
+  ) {
     showToast("Please fill in all required fields.", "error");
     return;
   }
@@ -242,29 +189,6 @@ async function editEvent(eventId) {
   const currentEventIndex = events.findIndex(
     (event) => event.eventId === eventId
   );
-
-  const parseCustomDate = (dateString) => {
-    // Remove the day of the week (e.g., "Tuesday - ")
-    const withoutDay = dateString.replace(/^[A-Za-z]+\s-\s/, "");
-
-    // Remove ordinal suffixes (e.g., "22nd" -> "22")
-    const withoutSuffix = withoutDay.replace(/(\d+)(st|nd|rd|th)/, "$1");
-
-    //Remove Time (e.g., "-22:00" -> "")
-    const withoutTime = withoutSuffix.replace(/-\s*\d{2}:\d{2}$/, "").trim();
-
-    // Rearrange the date string to "Month dd, yyyy"
-    const formattedDate = withoutTime.replace(
-      /^(\d+)\s(\w+)\s(\d{4})$/,
-      "$2 $1, $3"
-    );
-
-    // Convert to a standard date format
-    const standardDate = new Date(formattedDate);
-
-    // Return the parsed Date object
-    return standardDate;
-  };
 
   //Function to set form inputs to previous event data
   const setFormInputs = () => {
